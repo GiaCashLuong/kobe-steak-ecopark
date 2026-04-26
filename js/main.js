@@ -45,7 +45,8 @@ const TX = {
     form_phone_val:'Số điện thoại không hợp lệ.',
     form_table_label:'Chọn bàn (tuỳ chọn)',
     map_open:'Chọn bàn', map_title:'Chọn bàn của bạn',
-    map_confirm:'Xác nhận bàn này', map_cancel:'Đóng',
+    map_confirm:'Xác nhận bàn này', map_cancel:'Đóng', map_reselect:'Chọn lại',
+    map_confirm_anyway:'Xác nhận dù vậy',
     map_legend_avail:'Còn trống', map_legend_sel:'Đang chọn', map_legend_booked:'Đã đặt',
     map_no_table:'Chưa chọn', map_pick_datetime:'Hãy chọn ngày & giờ trước khi chọn bàn.',
     map_indoor:'Nhà hàng', map_outdoor:'Sân vườn',
@@ -97,7 +98,8 @@ const TX = {
     form_phone_val:'Invalid phone number.',
     form_table_label:'Table Selection (optional)',
     map_open:'Select Table', map_title:'Choose Your Table',
-    map_confirm:'Confirm This Table', map_cancel:'Close',
+    map_confirm:'Confirm Table(s)', map_cancel:'Close', map_reselect:'Reselect',
+    map_confirm_anyway:'Confirm Anyway',
     map_legend_avail:'Available', map_legend_sel:'Selected', map_legend_booked:'Booked',
     map_no_table:'Not selected', map_pick_datetime:'Please select a date & time before choosing a table.',
     map_indoor:'Indoor', map_outdoor:'Terrace',
@@ -647,87 +649,146 @@ const TABLES = [
   { id:'T25', x:558, y:490, zone:'indoor' },
 ];
 
-let selectedTable = null;
-let bookedTables  = new Set();
+let selectedTables = [];
+let bookedTables   = new Set();
+let warnPending    = false;
 
-const tmapOverlay     = document.getElementById('table-map-overlay');
-const floorSvg        = document.getElementById('floor-plan-svg');
-const btnOpenMap      = document.getElementById('btn-open-map');
-const btnCloseMap     = document.getElementById('btn-close-map');
-const btnCancelMap    = document.getElementById('btn-cancel-map');
-const btnConfirmTable = document.getElementById('btn-confirm-table');
-const tableDisplay    = document.getElementById('table-selected-display');
+const tmapOverlay      = document.getElementById('table-map-overlay');
+const floorSvg         = document.getElementById('floor-plan-svg');
+const btnOpenMap       = document.getElementById('btn-open-map');
+const btnCloseMap      = document.getElementById('btn-close-map');
+const btnCancelMap     = document.getElementById('btn-cancel-map');
+const btnConfirmTable  = document.getElementById('btn-confirm-table');
+const btnConfirmAnyway = document.getElementById('btn-confirm-anyway');
+const tableDisplay     = document.getElementById('table-selected-display');
+const tmapWarnPanel    = document.getElementById('tmap-warn-panel');
+const tmapWarnText     = document.getElementById('tmap-warn-text');
+const tmapCounter      = document.getElementById('tmap-counter');
+
+function maxTablesNeeded() {
+  const g = parseInt(document.getElementById('f-guests')?.value || '2', 10);
+  return Math.max(1, Math.ceil(g / 4));
+}
+
+function updateCounter() {
+  if (!tmapCounter) return;
+  const max = maxTablesNeeded();
+  const cur = selectedTables.length;
+  tmapCounter.textContent = `${cur}/${max} bàn`;
+  tmapCounter.className = 'tmap-counter' + (cur >= max ? ' tmap-counter--full' : '');
+}
 
 function renderFloorMap() {
   const TW = 58, TH = 36;
   const ns = 'http://www.w3.org/2000/svg';
-
   floorSvg.innerHTML = '';
-
   const addEl = (tag, attrs, parent) => {
     const el = document.createElementNS(ns, tag);
     Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
     (parent || floorSvg).appendChild(el);
     return el;
   };
-
-  // Background
   addEl('rect', { x:0, y:0, width:760, height:570, rx:12, fill:'#0a0e17' });
-
-  // Terrace boundary (U-shape)
   addEl('path', { d:'M 22,84 C 22,530 738,530 738,84', fill:'rgba(201,151,58,.04)', stroke:'#c9973a', 'stroke-width':1.5, 'stroke-dasharray':'5,4' });
   addEl('line', { x1:22, y1:84, x2:738, y2:84, stroke:'#c9973a', 'stroke-width':1, 'stroke-dasharray':'4,5', opacity:.35 });
-
-  // Zone label – outdoor
   const lblOut = addEl('text', { x:380, y:54, 'text-anchor':'middle', fill:'#c9973a', 'font-size':11, 'letter-spacing':2.5, opacity:.6 });
   lblOut.textContent = 'SÂN VƯỜN · NGOÀI TRỜI';
-
-  // Indoor room
   addEl('rect', { x:155, y:300, width:450, height:210, rx:6, fill:'rgba(91,127,168,.07)', stroke:'#5b7fa8', 'stroke-width':1.5 });
-
-  // Zone label – indoor
   const lblIn = addEl('text', { x:380, y:319, 'text-anchor':'middle', fill:'#5b7fa8', 'font-size':10, 'letter-spacing':1.8, opacity:.75 });
   lblIn.textContent = 'NHÀ HÀNG · BÊN TRONG';
-
-  // Tables
   TABLES.forEach(t => {
     const isBooked   = bookedTables.has(t.id);
-    const isSelected = selectedTable === t.id;
+    const isSelected = selectedTables.includes(t.id);
     const cls = isBooked ? 'tbl tbl--booked' : isSelected ? 'tbl tbl--selected' : 'tbl';
-
     const g = document.createElementNS(ns, 'g');
     g.setAttribute('class', cls);
     g.setAttribute('data-id', t.id);
     g.style.cursor = isBooked ? 'not-allowed' : 'pointer';
-
     addEl('rect', { x: t.x - TW/2, y: t.y - TH/2, width: TW, height: TH, rx:5, class:'tbl-rect' }, g);
     const lbl = document.createElementNS(ns, 'text');
-    lbl.setAttribute('x', t.x);
-    lbl.setAttribute('y', t.y + 4);
-    lbl.setAttribute('text-anchor', 'middle');
-    lbl.setAttribute('class', 'tbl-label');
+    lbl.setAttribute('x', t.x); lbl.setAttribute('y', t.y + 4);
+    lbl.setAttribute('text-anchor', 'middle'); lbl.setAttribute('class', 'tbl-label');
     lbl.textContent = t.id.replace('T','');
     g.appendChild(lbl);
-
     if (!isBooked) g.addEventListener('click', () => handleTableClick(t.id));
     floorSvg.appendChild(g);
   });
+  updateCounter();
+}
+
+function hideWarningPanel() {
+  warnPending = false;
+  if (tmapWarnPanel) tmapWarnPanel.style.display = 'none';
+  if (btnConfirmTable)  { btnConfirmTable.style.display = ''; btnConfirmTable.disabled = selectedTables.length === 0; }
+  if (btnConfirmAnyway) btnConfirmAnyway.style.display = 'none';
+  if (btnCancelMap) btnCancelMap.textContent = TX[lang].map_cancel || 'Đóng';
+}
+
+function showWarningPanel(lines) {
+  warnPending = true;
+  if (tmapWarnText)  tmapWarnText.innerHTML = lines.join('<br>');
+  if (tmapWarnPanel) tmapWarnPanel.style.display = 'block';
+  if (btnConfirmTable)  btnConfirmTable.style.display = 'none';
+  if (btnConfirmAnyway) btnConfirmAnyway.style.display = '';
+  if (btnCancelMap) btnCancelMap.textContent = TX[lang].map_reselect || 'Chọn lại';
 }
 
 function handleTableClick(id) {
-  selectedTable = selectedTable === id ? null : id;
-  btnConfirmTable.disabled = !selectedTable;
+  const idx = selectedTables.indexOf(id);
+  if (idx !== -1) {
+    selectedTables.splice(idx, 1);
+  } else {
+    if (selectedTables.length >= maxTablesNeeded()) return;
+    selectedTables.push(id);
+  }
+  hideWarningPanel();
+  if (btnConfirmTable) btnConfirmTable.disabled = selectedTables.length === 0;
   renderFloorMap();
+}
+
+function tableDist(id1, id2) {
+  const a = TABLES.find(t => t.id === id1), b = TABLES.find(t => t.id === id2);
+  return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+}
+
+function getWarnings(guests) {
+  const warnings = [];
+  const needed = Math.max(1, Math.ceil(guests / 4));
+  if (selectedTables.length < needed) {
+    warnings.push(`⚠ Với <strong>${guests} khách</strong>, bạn nên chọn <strong>${needed} bàn</strong>. Hiện mới chọn ${selectedTables.length} bàn.`);
+  }
+  if (selectedTables.length >= 2) {
+    const zones = selectedTables.map(id => TABLES.find(t => t.id === id).zone);
+    if (new Set(zones).size > 1) {
+      warnings.push('⚠ Các bàn bạn chọn ở <strong>khu vực khác nhau</strong> (sân vườn & bên trong). Khách sẽ ngồi tách biệt nhau.');
+    } else {
+      outer: for (let i = 0; i < selectedTables.length - 1; i++) {
+        for (let j = i + 1; j < selectedTables.length; j++) {
+          if (tableDist(selectedTables[i], selectedTables[j]) > 200) {
+            warnings.push('⚠ Một số bàn bạn chọn <strong>khá xa nhau</strong>. Khách có thể không ngồi gần nhau.');
+            break outer;
+          }
+        }
+      }
+    }
+  }
+  return warnings;
+}
+
+function buildCapacityNote(guests, tableIds) {
+  const n = tableIds.length, base = Math.floor(guests / n), rem = guests % n;
+  return tableIds.map((id, i) => {
+    const t = TABLES.find(t => t.id === id);
+    const zone = t.zone === 'indoor' ? TX[lang].map_indoor : TX[lang].map_outdoor;
+    return `Bàn ${t.id.replace('T','')} (${zone}, ${i < rem ? base + 1 : base} người)`;
+  }).join(' · ');
 }
 
 async function loadBookedTables(date, time) {
   const { data } = await window.db
-    .from('kobe_bookings')
-    .select('table_id')
-    .eq('date', date)
-    .eq('time', time)
-    .not('table_id', 'is', null);
-  bookedTables = new Set((data || []).map(r => r.table_id));
+    .from('kobe_bookings').select('table_id')
+    .eq('date', date).eq('time', time).not('table_id', 'is', null);
+  bookedTables = new Set((data || []).flatMap(r => r.table_id.split(',')));
 }
 
 async function openFloorMap() {
@@ -735,6 +796,7 @@ async function openFloorMap() {
   const time = document.getElementById('f-time').value;
   if (!date || !time) { showMsg(TX[lang].map_pick_datetime, 'error'); return; }
   document.getElementById('map-datetime-display').textContent = `${date.split('-').reverse().join('/')} · ${time}`;
+  hideWarningPanel();
   tmapOverlay.classList.add('visible');
   tmapOverlay.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
@@ -746,25 +808,46 @@ function closeFloorMap() {
   tmapOverlay.classList.remove('visible');
   tmapOverlay.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  hideWarningPanel();
 }
 
-function confirmTableSelection() {
-  if (!selectedTable) return;
-  const t = TABLES.find(t => t.id === selectedTable);
-  const zone = t.zone === 'indoor' ? TX[lang].map_indoor : TX[lang].map_outdoor;
-  tableDisplay.innerHTML = `<span class="table-badge">Bàn ${t.id.replace('T','')} · ${zone} <button type="button" class="table-clear-btn" id="btn-clear-table">✕</button></span>`;
-  document.getElementById('btn-clear-table').addEventListener('click', () => {
-    selectedTable = null;
-    tableDisplay.innerHTML = `<span class="table-none" data-tx="map_no_table">${TX[lang].map_no_table}</span>`;
+function applyTableSelection() {
+  const guests = parseInt(document.getElementById('f-guests')?.value || '2', 10);
+  const labelParts = selectedTables.map(id => {
+    const t = TABLES.find(t => t.id === id);
+    return `Bàn ${t.id.replace('T','')} · ${t.zone === 'indoor' ? TX[lang].map_indoor : TX[lang].map_outdoor}`;
   });
+  tableDisplay.innerHTML = `<span class="table-badge">${labelParts.join(' &amp; ')} <button type="button" class="table-clear-btn" id="btn-clear-table">✕</button></span>`;
+  document.getElementById('btn-clear-table').addEventListener('click', clearTableSelection);
+  const notesField = document.getElementById('f-notes');
+  const capNote = `[Phân bổ: ${buildCapacityNote(guests, selectedTables)}]`;
+  const existing = notesField.value.replace(/\n?\[Phân bổ:.*?\]/s, '').trim();
+  notesField.value = existing ? `${existing}\n${capNote}` : capNote;
   closeFloorMap();
 }
 
-if (btnOpenMap)      btnOpenMap.addEventListener('click', openFloorMap);
-if (btnCloseMap)     btnCloseMap.addEventListener('click', closeFloorMap);
-if (btnCancelMap)    btnCancelMap.addEventListener('click', closeFloorMap);
-if (btnConfirmTable) btnConfirmTable.addEventListener('click', confirmTableSelection);
-if (tmapOverlay)     tmapOverlay.addEventListener('click', e => { if (e.target === tmapOverlay) closeFloorMap(); });
+function confirmTableSelection() {
+  if (selectedTables.length === 0) return;
+  if (warnPending) { applyTableSelection(); return; }
+  const guests = parseInt(document.getElementById('f-guests')?.value || '2', 10);
+  const warnings = getWarnings(guests);
+  if (warnings.length > 0) { showWarningPanel(warnings); return; }
+  applyTableSelection();
+}
+
+function clearTableSelection() {
+  selectedTables = [];
+  tableDisplay.innerHTML = `<span class="table-none">${TX[lang].map_no_table}</span>`;
+  const notesField = document.getElementById('f-notes');
+  if (notesField) notesField.value = notesField.value.replace(/\n?\[Phân bổ:.*?\]/s, '').trim();
+}
+
+if (btnOpenMap)       btnOpenMap.addEventListener('click', openFloorMap);
+if (btnCloseMap)      btnCloseMap.addEventListener('click', closeFloorMap);
+if (btnCancelMap)     btnCancelMap.addEventListener('click', () => { if (warnPending) hideWarningPanel(); else closeFloorMap(); });
+if (btnConfirmTable)  btnConfirmTable.addEventListener('click', confirmTableSelection);
+if (btnConfirmAnyway) btnConfirmAnyway.addEventListener('click', confirmTableSelection);
+if (tmapOverlay)      tmapOverlay.addEventListener('click', e => { if (e.target === tmapOverlay) closeFloorMap(); });
 
 /* ─── Booking Form ───────────────────────────────────────── */
 const form    = document.getElementById('booking-form');
@@ -826,13 +909,12 @@ if (form) {
     try {
       const { error } = await window.db
         .from('kobe_bookings')
-        .insert([{ name, phone, guests, date, time, note: notes, table_id: selectedTable || null }]);
+        .insert([{ name, phone, guests, date, time, note: notes, table_id: selectedTables.length ? selectedTables.join(',') : null }]);
       if (error) throw error;
       showMsg(TX[lang].form_ok, 'success');
       form.reset();
       dateInput.min = dateInput.min;
-      selectedTable = null;
-      if (tableDisplay) tableDisplay.innerHTML = `<span class="table-none">${TX[lang].map_no_table}</span>`;
+      clearTableSelection();
     } catch {
       showMsg(TX[lang].form_err, 'error');
     } finally {

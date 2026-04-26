@@ -1257,6 +1257,31 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 #floor-plan-svg .tbl--booked .tbl-label { fill: #e8854a; }
 
+/* Table counter badge */
+.tmap-counter {
+  margin-left: auto;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: .03em;
+}
+.tmap-counter--full { color: var(--gold); }
+
+/* Warning panel */
+.tmap-warn-panel {
+  margin: 0 1.75rem .5rem;
+  padding: .9rem 1.1rem;
+  background: rgba(205,95,35,.12);
+  border: 1px solid rgba(205,95,35,.35);
+  border-radius: 8px;
+}
+.tmap-warn-panel p {
+  font-size: .84rem;
+  color: #e89a60;
+  line-height: 1.6;
+}
+.tmap-warn-panel strong { color: #f0b070; }
+
 /* Footer */
 .tmap-footer {
   display: flex;

@@ -407,13 +407,18 @@
         <span class="tmap-dot tmap-dot--booked"></span>
         <span data-tx="map_legend_booked">Đã đặt</span>
       </span>
+      <span class="tmap-counter" id="tmap-counter"></span>
     </div>
     <div class="tmap-svg-wrap">
       <svg id="floor-plan-svg" viewBox="0 0 760 570" xmlns="http://www.w3.org/2000/svg" aria-label="Floor plan"></svg>
     </div>
+    <div class="tmap-warn-panel" id="tmap-warn-panel" style="display:none">
+      <p id="tmap-warn-text"></p>
+    </div>
     <div class="tmap-footer">
       <button type="button" class="btn btn--ghost btn--sm" id="btn-cancel-map" data-tx="map_cancel">Đóng</button>
       <button type="button" class="btn btn--gold" id="btn-confirm-table" disabled data-tx="map_confirm">Xác nhận bàn này</button>
+      <button type="button" class="btn btn--gold" id="btn-confirm-anyway" style="display:none" data-tx="map_confirm_anyway">Xác nhận dù vậy</button>
     </div>
   </div>
 </div>
