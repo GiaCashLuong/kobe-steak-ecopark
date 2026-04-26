@@ -1,5 +1,6 @@
 /* ─── NAV: scroll behavior ─────────────────────────────── */
-const nav = document.getElementById('site-nav');
+const nav    = document.getElementById('site-nav');
+const heroBg = document.querySelector('.hero__bg');
 
 function onScroll() {
   if (!nav) return;
@@ -42,7 +43,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* ─── HERO PARALLAX ─────────────────────────────────────── */
-const heroBg = document.querySelector('.hero__bg');
 function parallaxHero() {
   if (!heroBg) return;
   heroBg.style.transform = `translateY(${window.scrollY * 0.3}px) scale(1.05)`;
