@@ -507,6 +507,37 @@ document.querySelectorAll('.tilt-card').forEach(card => {
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
+/* ─── Vietnam Map Pins ───────────────────────────────────── */
+const mapPopup  = document.getElementById('map-popup');
+const popupName = document.getElementById('popup-name');
+const popupAddr = document.getElementById('popup-addr');
+const popupLink = document.getElementById('popup-link');
+
+document.querySelectorAll('.location-pin').forEach(pin => {
+  pin.addEventListener('click', e => {
+    e.stopPropagation();
+    if (!mapPopup) return;
+    const dot     = pin.querySelector('.pin-dot');
+    const dotRect = dot.getBoundingClientRect();
+    const wrap    = pin.closest('.vn-map-wrap');
+    const wrapRect = wrap.getBoundingClientRect();
+
+    popupName.textContent = pin.dataset.name;
+    popupAddr.textContent = pin.dataset.addr;
+    popupLink.href = pin.dataset.maps;
+
+    let left = dotRect.left - wrapRect.left + dotRect.width + 12;
+    let top  = dotRect.top  - wrapRect.top  - 40;
+    if (left + 230 > wrapRect.width)  left = dotRect.left - wrapRect.left - 235;
+    if (top < 8) top = 8;
+
+    mapPopup.style.left = left + 'px';
+    mapPopup.style.top  = top  + 'px';
+    mapPopup.classList.add('visible');
+  });
+});
+document.addEventListener('click', () => mapPopup && mapPopup.classList.remove('visible'));
+
 /* ─── Booking Form ───────────────────────────────────────── */
 const form    = document.getElementById('booking-form');
 const formMsg = document.getElementById('form-msg');
