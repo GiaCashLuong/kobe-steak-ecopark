@@ -507,6 +507,62 @@ document.querySelectorAll('.tilt-card').forEach(card => {
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
+/* ─── Branch Map (Leaflet + OpenStreetMap) ───────────────── */
+const branches = [
+  {
+    name: 'Kobe Steak – Ecopark',
+    addr: 'L2.01S15 Landmark Ecopark, Hưng Yên',
+    phone: '096 879 18 68',
+    lat: 20.9806,
+    lng: 105.9788,
+    maps: 'https://maps.google.com/?q=Kobe+Steak+Landmark+Ecopark+Hung+Yen'
+  }
+  // Thêm chi nhánh mới vào đây:
+  // { name: '...', addr: '...', phone: '...', lat: ..., lng: ..., maps: '...' }
+];
+
+const mapEl = document.getElementById('branch-map');
+if (mapEl && typeof L !== 'undefined') {
+  const map = L.map('branch-map', {
+    scrollWheelZoom: false,
+    zoomControl: true
+  });
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>'
+  }).addTo(map);
+
+  const pulseIcon = L.divIcon({
+    className: '',
+    html: '<span class="branch-pin"></span>',
+    iconSize: [24, 24],
+    iconAnchor: [12, 12]
+  });
+
+  branches.forEach(b => {
+    L.marker([b.lat, b.lng], { icon: pulseIcon })
+      .addTo(map)
+      .bindPopup(`
+        <strong class="popup-name">${b.name}</strong>
+        <span class="popup-addr">${b.addr}</span>
+        <span class="popup-phone">${b.phone}</span>
+        <a class="popup-link" href="${b.maps}" target="_blank" rel="noopener">
+          Xem trên Google Maps →
+        </a>
+      `, { maxWidth: 240, className: 'branch-popup' });
+  });
+
+  if (branches.length === 1) {
+    map.setView([branches[0].lat, branches[0].lng], 14);
+  } else {
+    const group = L.featureGroup(branches.map(b =>
+      L.marker([b.lat, b.lng])
+    ));
+    map.fitBounds(group.getBounds().pad(0.2));
+  }
+}
+
 /* ─── Vietnam Map Pins ───────────────────────────────────── */
 const mapPopup  = document.getElementById('map-popup');
 const popupName = document.getElementById('popup-name');
