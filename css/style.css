@@ -757,6 +757,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .form-group textarea:focus { border-color: var(--gold); }
 .form-group textarea { resize: vertical; min-height: 80px; }
 .form-group select option { background: var(--dark); }
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1);
+  opacity: .5;
+  cursor: pointer;
+  transition: opacity var(--trans);
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: .9; }
 .form-msg {
   margin-bottom: 1rem;
   font-size: .88rem;
