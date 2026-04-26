@@ -1216,9 +1216,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* SVG floor plan */
 .tmap-svg-wrap {
-  padding: 1.25rem 1.75rem;
-  flex: 1;
-  overflow: hidden;
+  padding: .75rem 1.75rem 1.25rem;
 }
 #floor-plan-svg {
   width: 100%;

@@ -672,7 +672,7 @@ function renderFloorMap() {
   };
 
   // Background
-  addEl('rect', { x:0, y:0, width:760, height:545, rx:12, fill:'#0a0e17' });
+  addEl('rect', { x:0, y:0, width:760, height:570, rx:12, fill:'#0a0e17' });
 
   // Terrace boundary (U-shape)
   addEl('path', { d:'M 22,84 C 22,530 738,530 738,84', fill:'rgba(201,151,58,.04)', stroke:'#c9973a', 'stroke-width':1.5, 'stroke-dasharray':'5,4' });
