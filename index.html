@@ -288,6 +288,15 @@
           <option value="21:00">21:00</option>
         </select>
       </div>
+      <div class="form-group table-picker-group">
+        <label data-tx="form_table_label">Chọn bàn</label>
+        <div class="table-pick-row">
+          <div class="table-selected-display" id="table-selected-display">
+            <span class="table-none" data-tx="map_no_table">Chưa chọn</span>
+          </div>
+          <button type="button" class="btn btn--ghost btn--sm" id="btn-open-map" data-tx="map_open">Chọn bàn</button>
+        </div>
+      </div>
       <div class="form-group">
         <label for="f-notes" data-tx="form_notes">Ghi chú (tuỳ chọn)</label>
         <textarea id="f-notes" name="notes" rows="3"></textarea>
@@ -376,5 +385,41 @@
 <script src="js/config.js"></script>
 <script src="js/leaflet.js"></script>
 <script src="js/main.js"></script>
+
+<!-- TABLE MAP MODAL -->
+<div class="tmap-overlay" id="table-map-overlay" aria-modal="true" role="dialog" aria-hidden="true">
+  <div class="tmap-modal">
+    <div class="tmap-header">
+      <div>
+        <h3 class="tmap-title" data-tx="map_title">Chọn bàn của bạn</h3>
+        <p class="tmap-subtitle" id="map-datetime-display"></p>
+      </div>
+      <button class="tmap-close" id="btn-close-map" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="tmap-legend">
+      <span class="tmap-legend-item">
+        <span class="tmap-dot tmap-dot--avail"></span>
+        <span data-tx="map_legend_avail">Còn trống</span>
+      </span>
+      <span class="tmap-legend-item">
+        <span class="tmap-dot tmap-dot--sel"></span>
+        <span data-tx="map_legend_sel">Đang chọn</span>
+      </span>
+      <span class="tmap-legend-item">
+        <span class="tmap-dot tmap-dot--booked"></span>
+        <span data-tx="map_legend_booked">Đã đặt</span>
+      </span>
+    </div>
+    <div class="tmap-svg-wrap">
+      <svg id="floor-plan-svg" viewBox="0 0 760 545" xmlns="http://www.w3.org/2000/svg" aria-label="Floor plan"></svg>
+    </div>
+    <div class="tmap-footer">
+      <button type="button" class="btn btn--ghost btn--sm" id="btn-cancel-map" data-tx="map_cancel">Đóng</button>
+      <button type="button" class="btn btn--gold" id="btn-confirm-table" disabled data-tx="map_confirm">Xác nhận bàn này</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

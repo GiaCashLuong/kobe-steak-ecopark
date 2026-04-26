@@ -43,6 +43,12 @@ const TX = {
     form_err:'Có lỗi xảy ra. Vui lòng thử lại hoặc gọi trực tiếp 096 879 18 68.',
     form_val:'Vui lòng điền đầy đủ thông tin bắt buộc.',
     form_phone_val:'Số điện thoại không hợp lệ.',
+    form_table_label:'Chọn bàn (tuỳ chọn)',
+    map_open:'Chọn bàn', map_title:'Chọn bàn của bạn',
+    map_confirm:'Xác nhận bàn này', map_cancel:'Đóng',
+    map_legend_avail:'Còn trống', map_legend_sel:'Đang chọn', map_legend_booked:'Đã đặt',
+    map_no_table:'Chưa chọn', map_pick_datetime:'Hãy chọn ngày & giờ trước khi chọn bàn.',
+    map_indoor:'Nhà hàng', map_outdoor:'Sân vườn',
     loc_eyebrow:'Vị trí', loc_title:'Tìm Chúng Tôi',
     loc_addr_title:'Địa chỉ', loc_phone_title:'Điện thoại', loc_hours_title:'Giờ mở cửa',
     loc_hours:'Thứ 3 – Chủ Nhật: 10:00 – 22:00<br>Nghỉ Thứ Hai',
@@ -89,6 +95,12 @@ const TX = {
     form_err:'An error occurred. Please try again or call 096 879 18 68 directly.',
     form_val:'Please fill in all required fields.',
     form_phone_val:'Invalid phone number.',
+    form_table_label:'Table Selection (optional)',
+    map_open:'Select Table', map_title:'Choose Your Table',
+    map_confirm:'Confirm This Table', map_cancel:'Close',
+    map_legend_avail:'Available', map_legend_sel:'Selected', map_legend_booked:'Booked',
+    map_no_table:'Not selected', map_pick_datetime:'Please select a date & time before choosing a table.',
+    map_indoor:'Indoor', map_outdoor:'Terrace',
     loc_eyebrow:'Location', loc_title:'Find Us',
     loc_addr_title:'Address', loc_phone_title:'Phone', loc_hours_title:'Opening Hours',
     loc_hours:'Tuesday – Sunday: 10:00 – 22:00<br>Closed Mondays',
@@ -604,6 +616,156 @@ document.querySelectorAll('.location-pin').forEach(pin => {
 });
 document.addEventListener('click', () => mapPopup && mapPopup.classList.remove('visible'));
 
+/* ─── Table Map ──────────────────────────────────────────── */
+const TABLES = [
+  // Outdoor – Sân vườn
+  { id:'T01', x:240, y:108, zone:'outdoor' },
+  { id:'T02', x:460, y:108, zone:'outdoor' },
+  { id:'T03', x:183, y:168, zone:'outdoor' },
+  { id:'T04', x:375, y:168, zone:'outdoor' },
+  { id:'T05', x:558, y:168, zone:'outdoor' },
+  { id:'T06', x:138, y:232, zone:'outdoor' },
+  { id:'T07', x:375, y:232, zone:'outdoor' },
+  { id:'T08', x:615, y:232, zone:'outdoor' },
+  { id:'T09', x:88,  y:360, zone:'outdoor' },
+  { id:'T10', x:668, y:360, zone:'outdoor' },
+  // Indoor – Bên trong nhà hàng
+  { id:'T11', x:200, y:338, zone:'indoor' },
+  { id:'T12', x:200, y:393, zone:'indoor' },
+  { id:'T13', x:200, y:448, zone:'indoor' },
+  { id:'T14', x:200, y:490, zone:'indoor' },
+  { id:'T15', x:318, y:358, zone:'indoor' },
+  { id:'T16', x:318, y:418, zone:'indoor' },
+  { id:'T17', x:318, y:475, zone:'indoor' },
+  { id:'T18', x:443, y:338, zone:'indoor' },
+  { id:'T19', x:443, y:393, zone:'indoor' },
+  { id:'T20', x:443, y:448, zone:'indoor' },
+  { id:'T21', x:443, y:490, zone:'indoor' },
+  { id:'T22', x:558, y:338, zone:'indoor' },
+  { id:'T23', x:558, y:393, zone:'indoor' },
+  { id:'T24', x:558, y:448, zone:'indoor' },
+  { id:'T25', x:558, y:490, zone:'indoor' },
+];
+
+let selectedTable = null;
+let bookedTables  = new Set();
+
+const tmapOverlay     = document.getElementById('table-map-overlay');
+const floorSvg        = document.getElementById('floor-plan-svg');
+const btnOpenMap      = document.getElementById('btn-open-map');
+const btnCloseMap     = document.getElementById('btn-close-map');
+const btnCancelMap    = document.getElementById('btn-cancel-map');
+const btnConfirmTable = document.getElementById('btn-confirm-table');
+const tableDisplay    = document.getElementById('table-selected-display');
+
+function renderFloorMap() {
+  const TW = 58, TH = 36;
+  const ns = 'http://www.w3.org/2000/svg';
+
+  floorSvg.innerHTML = '';
+
+  const addEl = (tag, attrs, parent) => {
+    const el = document.createElementNS(ns, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    (parent || floorSvg).appendChild(el);
+    return el;
+  };
+
+  // Background
+  addEl('rect', { x:0, y:0, width:760, height:545, rx:12, fill:'#0a0e17' });
+
+  // Terrace boundary (U-shape)
+  addEl('path', { d:'M 22,84 C 22,530 738,530 738,84', fill:'rgba(201,151,58,.04)', stroke:'#c9973a', 'stroke-width':1.5, 'stroke-dasharray':'5,4' });
+  addEl('line', { x1:22, y1:84, x2:738, y2:84, stroke:'#c9973a', 'stroke-width':1, 'stroke-dasharray':'4,5', opacity:.35 });
+
+  // Zone label – outdoor
+  const lblOut = addEl('text', { x:380, y:54, 'text-anchor':'middle', fill:'#c9973a', 'font-size':11, 'letter-spacing':2.5, opacity:.6 });
+  lblOut.textContent = 'SÂN VƯỜN · NGOÀI TRỜI';
+
+  // Indoor room
+  addEl('rect', { x:155, y:300, width:450, height:210, rx:6, fill:'rgba(91,127,168,.07)', stroke:'#5b7fa8', 'stroke-width':1.5 });
+
+  // Zone label – indoor
+  const lblIn = addEl('text', { x:380, y:319, 'text-anchor':'middle', fill:'#5b7fa8', 'font-size':10, 'letter-spacing':1.8, opacity:.75 });
+  lblIn.textContent = 'NHÀ HÀNG · BÊN TRONG';
+
+  // Tables
+  TABLES.forEach(t => {
+    const isBooked   = bookedTables.has(t.id);
+    const isSelected = selectedTable === t.id;
+    const cls = isBooked ? 'tbl tbl--booked' : isSelected ? 'tbl tbl--selected' : 'tbl';
+
+    const g = document.createElementNS(ns, 'g');
+    g.setAttribute('class', cls);
+    g.setAttribute('data-id', t.id);
+    g.style.cursor = isBooked ? 'not-allowed' : 'pointer';
+
+    addEl('rect', { x: t.x - TW/2, y: t.y - TH/2, width: TW, height: TH, rx:5, class:'tbl-rect' }, g);
+    const lbl = document.createElementNS(ns, 'text');
+    lbl.setAttribute('x', t.x);
+    lbl.setAttribute('y', t.y + 4);
+    lbl.setAttribute('text-anchor', 'middle');
+    lbl.setAttribute('class', 'tbl-label');
+    lbl.textContent = t.id.replace('T','');
+    g.appendChild(lbl);
+
+    if (!isBooked) g.addEventListener('click', () => handleTableClick(t.id));
+    floorSvg.appendChild(g);
+  });
+}
+
+function handleTableClick(id) {
+  selectedTable = selectedTable === id ? null : id;
+  btnConfirmTable.disabled = !selectedTable;
+  renderFloorMap();
+}
+
+async function loadBookedTables(date, time) {
+  const { data } = await window.db
+    .from('kobe_bookings')
+    .select('table_id')
+    .eq('date', date)
+    .eq('time', time)
+    .not('table_id', 'is', null);
+  bookedTables = new Set((data || []).map(r => r.table_id));
+}
+
+async function openFloorMap() {
+  const date = document.getElementById('f-date').value;
+  const time = document.getElementById('f-time').value;
+  if (!date || !time) { showMsg(TX[lang].map_pick_datetime, 'error'); return; }
+  document.getElementById('map-datetime-display').textContent = `${date.split('-').reverse().join('/')} · ${time}`;
+  tmapOverlay.classList.add('visible');
+  tmapOverlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  await loadBookedTables(date, time);
+  renderFloorMap();
+}
+
+function closeFloorMap() {
+  tmapOverlay.classList.remove('visible');
+  tmapOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function confirmTableSelection() {
+  if (!selectedTable) return;
+  const t = TABLES.find(t => t.id === selectedTable);
+  const zone = t.zone === 'indoor' ? TX[lang].map_indoor : TX[lang].map_outdoor;
+  tableDisplay.innerHTML = `<span class="table-badge">Bàn ${t.id.replace('T','')} · ${zone} <button type="button" class="table-clear-btn" id="btn-clear-table">✕</button></span>`;
+  document.getElementById('btn-clear-table').addEventListener('click', () => {
+    selectedTable = null;
+    tableDisplay.innerHTML = `<span class="table-none" data-tx="map_no_table">${TX[lang].map_no_table}</span>`;
+  });
+  closeFloorMap();
+}
+
+if (btnOpenMap)      btnOpenMap.addEventListener('click', openFloorMap);
+if (btnCloseMap)     btnCloseMap.addEventListener('click', closeFloorMap);
+if (btnCancelMap)    btnCancelMap.addEventListener('click', closeFloorMap);
+if (btnConfirmTable) btnConfirmTable.addEventListener('click', confirmTableSelection);
+if (tmapOverlay)     tmapOverlay.addEventListener('click', e => { if (e.target === tmapOverlay) closeFloorMap(); });
+
 /* ─── Booking Form ───────────────────────────────────────── */
 const form    = document.getElementById('booking-form');
 const formMsg = document.getElementById('form-msg');
@@ -645,11 +807,13 @@ if (form) {
     try {
       const { error } = await window.db
         .from('kobe_bookings')
-        .insert([{ name, phone, guests, date, time, note: notes }]);
+        .insert([{ name, phone, guests, date, time, note: notes, table_id: selectedTable || null }]);
       if (error) throw error;
       showMsg(TX[lang].form_ok, 'success');
       form.reset();
-      dateInput.min = dateInput.min; // re-apply min
+      dateInput.min = dateInput.min;
+      selectedTable = null;
+      if (tableDisplay) tableDisplay.innerHTML = `<span class="table-none">${TX[lang].map_no_table}</span>`;
     } catch {
       showMsg(TX[lang].form_err, 'error');
     } finally {
