@@ -513,8 +513,8 @@ const branches = [
     name: 'Kobe Steak – Ecopark',
     addr: 'L2.01S15 Landmark Ecopark, Hưng Yên',
     phone: '096 879 18 68',
-    lat: 20.9806,
-    lng: 105.9788,
+    lat: 20.9550513,
+    lng: 105.9314746,
     maps: 'https://maps.google.com/?q=Kobe+Steak+Landmark+Ecopark+Hung+Yen'
   }
   // Thêm chi nhánh mới vào đây:
