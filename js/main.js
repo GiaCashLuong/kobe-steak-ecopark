@@ -1,214 +1,561 @@
-/* ─── NAV: scroll behavior ─────────────────────────────── */
-const nav    = document.getElementById('site-nav');
-const heroBg = document.querySelector('.hero__bg');
+/* ═══════════════════════════════════════════════════════════
+   KOBE STEAK – main.js
+   ═══════════════════════════════════════════════════════════ */
 
-function onScroll() {
-  if (!nav) return;
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-  parallaxHero();
-}
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+/* ─── i18n ──────────────────────────────────────────────── */
+const TX = {
+  vi: {
+    nav_about:'Về chúng tôi', nav_menu:'Thực đơn', nav_gallery:'Không gian',
+    nav_book:'Đặt bàn', nav_location:'Vị trí',
+    hero_eyebrow:'Landmark Ecopark · Hưng Yên',
+    hero_line1:'Nghệ Thuật', hero_line2:'Bít Tết Âu',
+    hero_sub:'Hơn 60 món Âu đẳng cấp – từ Wagyu Tomahawk đến hải sản tươi sống, trong không gian sang trọng ven hồ',
+    hero_book:'Đặt bàn ngay', hero_menu:'Xem thực đơn', hero_scroll:'Khám phá',
+    about_eyebrow:'Câu chuyện của chúng tôi', about_title:'Hơn Cả Một Bữa Ăn',
+    about_p1:'Kobe Steak ra đời từ niềm đam mê với ẩm thực Âu chính thống — nơi mỗi miếng thịt được chọn lựa kỹ càng từ những trang trại hàng đầu Mỹ, Úc và New Zealand.',
+    about_p2:'Tọa lạc tại Landmark Ecopark giữa không gian xanh mát ven hồ, chúng tôi mang đến trải nghiệm ẩm thực sang trọng kết hợp sự ấm áp của bữa ăn gia đình.',
+    about_f1:'Thịt nhập khẩu cao cấp', about_f2:'Wine & cocktail đặc sắc',
+    about_f3:'Không gian ven hồ Ecopark', about_f4:'Đầu bếp Âu chuyên nghiệp',
+    stat_years:'Năm hoạt động', stat_dishes:'Món Âu đặc sắc',
+    stat_guests:'Thực khách phục vụ', stat_rating:'Đánh giá trung bình',
+    menu_eyebrow:'Thực đơn', menu_title:'Hành Trình Ẩm Thực',
+    tab_steak:'🥩 Steak', tab_app:'🥗 Khai vị', tab_main:'🍗 Món chính',
+    tab_pasta:'🍝 Pasta', tab_pizza:'🍕 Pizza', tab_platter:'🧀 Platter',
+    tab_sides:'🍟 Món phụ', tab_dessert:'🍮 Tráng miệng', tab_drinks:'🍷 Đồ uống',
+    exp_eyebrow:'Trải nghiệm', exp_title:'Mọi Dịp Đều Đặc Biệt',
+    exp_dinein:'Dine In', exp_dinein_d:'Trải nghiệm ẩm thực đầy đủ trong không gian sang trọng, ấm cúng với view hồ Ecopark.',
+    exp_takeaway:'Takeaway', exp_takeaway_d:'Thưởng thức các món yêu thích tại nhà với đóng gói cẩn thận, giữ trọn hương vị.',
+    exp_outdoor:'Outdoor Seating', exp_outdoor_d:'Bàn ngoài trời ven hồ – lý tưởng cho buổi tối lãng mạn hay họp mặt gia đình.',
+    exp_private:'Private Events', exp_private_d:'Không gian riêng tư cho tiệc sinh nhật, kỷ niệm, họp mặt doanh nghiệp.',
+    gal_eyebrow:'Không gian', gal_title:'Ảnh Nhà Hàng',
+    test_eyebrow:'Đánh giá', test_title:'Khách Hàng Nói Gì',
+    test1_text:'"Steak Tomahawk ở đây ngon nhất tôi từng ăn ở Việt Nam. Không gian ven hồ cực kỳ lãng mạn, phục vụ tận tình. Chắc chắn sẽ quay lại!"',
+    test2_text:'"Pizza và pasta rất chuẩn vị Ý. Phần Ribeye Úc mềm, thơm, sốt nấm tuyệt vời. Giá hợp lý so với chất lượng."',
+    test3_text:'"Tổ chức sinh nhật cho chồng ở đây, không gian riêng rất ổn. Wine list phong phú, đặc biệt là Bordeaux rất hợp với steak."',
+    test_note:'100% Khách Hàng Đề Xuất · 4.9★ trên Google Maps',
+    book_eyebrow:'Đặt bàn', book_title:'Giữ Chỗ Của Bạn',
+    book_desc:'Đặt bàn trước để đảm bảo chỗ ngồi tốt nhất, đặc biệt vào cuối tuần và dịp lễ.',
+    book_hours:'Thứ 3 – CN: 10:00 – 22:00',
+    form_name:'Họ và tên *', form_phone:'Số điện thoại *', form_guests:'Số khách *',
+    form_date:'Ngày *', form_time:'Giờ *', form_time_ph:'-- Chọn giờ --',
+    form_notes:'Ghi chú (tuỳ chọn)', form_submit:'Xác nhận đặt bàn',
+    form_ok:'✓ Đặt bàn thành công! Chúng tôi sẽ liên hệ xác nhận sớm nhất.',
+    form_err:'Có lỗi xảy ra. Vui lòng thử lại hoặc gọi trực tiếp 096 879 18 68.',
+    form_val:'Vui lòng điền đầy đủ thông tin bắt buộc.',
+    form_phone_val:'Số điện thoại không hợp lệ.',
+    loc_eyebrow:'Vị trí', loc_title:'Tìm Chúng Tôi',
+    loc_addr_title:'Địa chỉ', loc_phone_title:'Điện thoại', loc_hours_title:'Giờ mở cửa',
+    loc_hours:'Thứ 3 – Chủ Nhật: 10:00 – 22:00<br>Nghỉ Thứ Hai',
+    loc_directions:'📍 Chỉ đường',
+    footer_tag:'Ẩm thực Âu đẳng cấp · Landmark Ecopark',
+    footer_copy:'© 2025 Kobe Steak – Landmark Ecopark. All rights reserved.',
+  },
+  en: {
+    nav_about:'About Us', nav_menu:'Menu', nav_gallery:'Gallery',
+    nav_book:'Reserve', nav_location:'Location',
+    hero_eyebrow:'Landmark Ecopark · Hung Yen',
+    hero_line1:'The Art of', hero_line2:'European Steak',
+    hero_sub:'Over 60 premium European dishes – from Wagyu Tomahawk to fresh seafood, in a luxurious lakeside setting',
+    hero_book:'Reserve a Table', hero_menu:'View Menu', hero_scroll:'Explore',
+    about_eyebrow:'Our Story', about_title:'More Than a Meal',
+    about_p1:'Kobe Steak was born from a passion for authentic European cuisine — where every cut is carefully selected from the finest farms in the USA, Australia and New Zealand.',
+    about_p2:'Nestled at Landmark Ecopark amid lush lakeside greenery, we deliver a fine-dining experience wrapped in the warmth of a family gathering.',
+    about_f1:'Premium imported meats', about_f2:'Curated wines & cocktails',
+    about_f3:'Lakeside Ecopark setting', about_f4:'Professional European chefs',
+    stat_years:'Years of operation', stat_dishes:'European specialties',
+    stat_guests:'Guests served', stat_rating:'Average rating',
+    menu_eyebrow:'Menu', menu_title:'A Culinary Journey',
+    tab_steak:'🥩 Steak', tab_app:'🥗 Appetizers', tab_main:'🍗 Mains',
+    tab_pasta:'🍝 Pasta', tab_pizza:'🍕 Pizza', tab_platter:'🧀 Platters',
+    tab_sides:'🍟 Sides', tab_dessert:'🍮 Desserts', tab_drinks:'🍷 Drinks',
+    exp_eyebrow:'Experience', exp_title:'Every Occasion is Special',
+    exp_dinein:'Dine In', exp_dinein_d:'A full fine-dining experience in our elegant lakeside atmosphere.',
+    exp_takeaway:'Takeaway', exp_takeaway_d:'Enjoy your favourite dishes at home, carefully packaged to preserve every flavour.',
+    exp_outdoor:'Outdoor Seating', exp_outdoor_d:'Lakeside terrace — perfect for a romantic evening or a family gathering.',
+    exp_private:'Private Events', exp_private_d:'Exclusive spaces for birthdays, anniversaries and corporate gatherings.',
+    gal_eyebrow:'Ambiance', gal_title:'Restaurant Gallery',
+    test_eyebrow:'Reviews', test_title:'What Guests Say',
+    test1_text:'"The best Tomahawk steak I\'ve ever had in Vietnam. The lakeside setting is incredibly romantic. Will definitely come back!"',
+    test2_text:'"The pizza and pasta are perfectly authentic. The Australian Ribeye was tender and flavourful, mushroom sauce excellent. Great value."',
+    test3_text:'"Organised my husband\'s birthday here – the private space was perfect. Excellent wine list, especially the Bordeaux with the steak."',
+    test_note:'100% Guest Recommendation · 4.9★ on Google Maps',
+    book_eyebrow:'Reserve', book_title:'Secure Your Seat',
+    book_desc:'Book ahead to guarantee the best table, especially on weekends and holidays.',
+    book_hours:'Tue – Sun: 10:00 – 22:00',
+    form_name:'Full Name *', form_phone:'Phone Number *', form_guests:'Guests *',
+    form_date:'Date *', form_time:'Time *', form_time_ph:'-- Select time --',
+    form_notes:'Notes (optional)', form_submit:'Confirm Reservation',
+    form_ok:'✓ Reservation confirmed! We will contact you shortly.',
+    form_err:'An error occurred. Please try again or call 096 879 18 68 directly.',
+    form_val:'Please fill in all required fields.',
+    form_phone_val:'Invalid phone number.',
+    loc_eyebrow:'Location', loc_title:'Find Us',
+    loc_addr_title:'Address', loc_phone_title:'Phone', loc_hours_title:'Opening Hours',
+    loc_hours:'Tuesday – Sunday: 10:00 – 22:00<br>Closed Mondays',
+    loc_directions:'📍 Get Directions',
+    footer_tag:'Premium European Cuisine · Landmark Ecopark',
+    footer_copy:'© 2025 Kobe Steak – Landmark Ecopark. All rights reserved.',
+  }
+};
 
-/* ─── NAV: mobile toggle ───────────────────────────────── */
-const navToggle = document.getElementById('nav-toggle');
-const navLinks  = document.getElementById('nav-links');
+/* ─── Menu Data ──────────────────────────────────────────── */
+const MENU = {
+  steak: {
+    cats: [
+      {
+        label: { vi:'Bò Mỹ', en:'American Beef' },
+        items: [
+          { vi:'Steak Lõi Vai Bò Mỹ', en:'American Top Blade Steak', desc_vi:'Lõi vai bò Mỹ ăn kèm rau củ theo mùa và nước sốt.', desc_en:'American Top Blade Steak served with seasonal vegetables and sauce.', price:'200gr – 285k / 300gr – 395k / 400gr – 538k' },
+          { vi:'Steak Sườn Bò Mỹ Rút Xương', en:'American Short-Rib Boneless Steak', desc_vi:'Sườn bò Mỹ rút xương ăn kèm rau củ theo mùa và nước sốt.', desc_en:'American Short-rib Boneless served with seasonal vegetables and sauce.', price:'120gr – 318k / 200gr – 527k / 300gr – 758k' },
+          { vi:'Steak Tomahawk', en:'Grilled Tomahawk Steak', desc_vi:'Món steak Tomahawk cao cấp ăn kèm rau củ theo mùa, bánh mì và nước sốt.', desc_en:'A luxurious Tomahawk steak served with seasonal vegetables, bread and sauce.', price:'1,000gr – 2,079k', badge:'SPECIAL' },
+        ]
+      },
+      {
+        label: { vi:'Bò Úc', en:'Australian Beef' },
+        items: [
+          { vi:'Steak Thăn Ngoại Bò Úc', en:'Australian Striploin Steak', desc_vi:'Thăn ngoại bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian beef striploin served with seasonal vegetables and sauce.', price:'200gr – 285k / 300gr – 395k / 400gr – 538k' },
+          { vi:'Steak Nạc Lưng Bò Úc', en:'Australian Rib-Eye Steak', desc_vi:'Nạc lưng bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian Rib-eye Steak served with seasonal vegetables and sauce.', price:'200gr – 318k / 300gr – 637k / 400gr – 835k' },
+          { vi:'Steak Thăn Nội Bò Úc', en:'Australian Tenderloin Steak', desc_vi:'Thăn nội bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian Tenderloin Steak served with seasonal vegetables and sauce.', price:'200gr – 439k / 300gr – 637k' },
+        ]
+      },
+      {
+        label: { vi:'Cừu Pháp', en:'French Lamb' },
+        items: [
+          { vi:'Steak Sườn Cừu Pháp', en:'French Lamb Rack Steak', desc_vi:'Sườn cừu Pháp dùng kèm rau củ theo mùa và nước sốt.', desc_en:'Tender French lamb rack served with seasonal vegetables and sauce.', price:'200gr – 499k / 300gr – 699k' },
+        ]
+      }
+    ]
+  },
+  appetizer: {
+    cats: [
+      {
+        label: { vi:'Súp', en:'Soups' },
+        items: [
+          { vi:'Súp Kem Bí Đỏ', en:'Pumpkin Cream Soup', desc_vi:'Súp kem bí đỏ đậm vị bí đỏ tự nhiên.', desc_en:'A rich and creamy pumpkin soup.', price:'55k' },
+          { vi:'Súp Kem Nấm', en:'Mushroom Cream Soup', desc_vi:'Súp kem nấm béo ngậy, kết hợp vị nấm thơm lừng.', desc_en:'A hearty and flavorful mushroom cream soup.', price:'66k' },
+          { vi:'Súp Kem Gà Nấm', en:'Chicken Cream Soup', desc_vi:'Súp kem gà nấm với vị ngọt thanh.', desc_en:'A comforting chicken soup with sweet taste.', price:'77k' },
+        ]
+      },
+      {
+        label: { vi:'Quesadilla', en:'Quesadilla' },
+        items: [
+          { vi:'Bánh Quesadilla Bò', en:'Beef Quesadilla', desc_vi:'Vỏ bánh tortilla nướng giòn, nhân bò xay đậm đà và phô mai béo ngậy.', desc_en:'Crispy tortilla, flavorful ground beef, and creamy melted cheese.', price:'131k' },
+          { vi:'Bánh Quesadilla Gà', en:'Chicken Quesadilla', desc_vi:'Vỏ bánh tortilla nướng giòn, nhân gà xé và phô mai tan chảy.', desc_en:'Crispy tortilla, shredded chicken, and melted cheese.', price:'131k' },
+        ]
+      },
+      {
+        label: { vi:'Salad', en:'Salad' },
+        items: [
+          { vi:'Salad Rau Xanh', en:'Mixed Green Salad', desc_vi:'Salad rau xanh tươi mát, ăn kèm sốt chanh leo.', desc_en:'A refreshing mix of crisp greens with passion fruit sauce.', price:'100k' },
+          { vi:'Salad Caesar Truyền Thống', en:'Caesar Salad', desc_vi:'Salad Caesar với thịt xông khói, lườn gà nướng và rau xanh.', desc_en:'Classic Caesar salad with bacon, grilled chicken breast and greens.', price:'120k' },
+          { vi:'Salad Lườn Ngỗng Xông Khói', en:'Smoked Goose Breast Salad', desc_vi:'Rau xanh, lườn ngỗng và sốt chanh leo cân bằng vị giác.', desc_en:'Green vegetables, goose breast and passion fruit sauce.', price:'140k' },
+          { vi:'Salad Trái Cây Nhiệt Đới', en:'Tropical Fruit Salad', desc_vi:'Các loại trái cây tươi kèm sốt, mang lại vị ngọt mát và thanh nhẹ.', desc_en:'Fresh tropical fruits with a refreshing sauce dressing.', price:'159k' },
+        ]
+      }
+    ]
+  },
+  main: {
+    cats: [
+      {
+        label: { vi:'Gà & Gia Cầm', en:'Chicken & Poultry' },
+        items: [
+          { vi:'Cánh Gà Rán', en:'Fried Chicken Wings', desc_vi:'Cánh gà rán với cấu trúc giòn bên ngoài, mọng nước bên trong.', desc_en:'Golden fried chicken wings with a crispy exterior and juicy interior.', price:'110k' },
+          { vi:'Cánh Gà Nướng BBQ', en:'Grilled BBQ Chicken Wings', desc_vi:'Gà nướng BBQ mềm mọng, ăn kèm rau củ theo mùa.', desc_en:'Juicy BBQ grilled chicken served with seasonal vegetables.', price:'120k' },
+          { vi:'Lườn Vịt Áp Chảo', en:'Pan-Seared Duck Breast', desc_vi:'Lườn vịt áp chảo ăn kèm rau củ theo mùa, khoai tây và nước sốt.', desc_en:'Pan-seared duck breast served with seasonal vegetables, potatoes and sauce.', price:'200k' },
+        ]
+      },
+      {
+        label: { vi:'BBQ & Sườn', en:'BBQ & Ribs' },
+        items: [
+          { vi:'Sườn Heo Nướng BBQ', en:'BBQ Pork Ribs', desc_vi:'Sườn lợn nướng sốt BBQ, ăn kèm rau củ theo mùa.', desc_en:'Grilled pork ribs with BBQ sauce, served with seasonal vegetables.', price:'285k' },
+          { vi:'Sườn Bò Mỹ Nướng BBQ', en:'BBQ American Beef Ribs', desc_vi:'Sườn bò Mỹ nướng sốt BBQ, ăn kèm rau củ theo mùa.', desc_en:'Grilled American beef ribs, served with seasonal vegetables.', price:'399k' },
+        ]
+      },
+      {
+        label: { vi:'Hải Sản', en:'Seafood' },
+        items: [
+          { vi:'Vẹm Xanh New Zealand Bỏ Lò', en:'Baked NZ Green Mussels', desc_vi:'Vẹm xanh NZ nướng lò cùng phô mai Anchor và Parmesan.', desc_en:'Oven-baked NZ green mussels with Anchor cheese and Parmesan.', price:'199k' },
+          { vi:'Mực Vòng Chiên Giòn', en:'Crispy Fried Calamari', desc_vi:'Mực vòng chiên giòn, bên ngoài giòn rụm, bên trong mềm mại.', desc_en:'Golden-fried calamari rings, crispy outside and tender inside.', price:'209k' },
+          { vi:'Cá Hồi Áp Chảo', en:'Pan-Seared Salmon', desc_vi:'Cá hồi áp chảo ăn kèm rau củ theo mùa, khoai tây và nước sốt.', desc_en:'Pan-seared salmon fillet served with seasonal vegetables and potatoes.', price:'349k' },
+          { vi:'Tôm Sú Nướng Phô Mai', en:'Grilled Tiger Shrimp with Cheese', desc_vi:'Tôm sú tươi nướng vừa chín tới với lớp phô mai tan chảy.', desc_en:'Perfectly grilled tiger shrimp with melted cheese.', price:'399k' },
+          { vi:'Cồi Sò Điệp Nhật Áp Chảo', en:'Pan-Seared Japanese Scallops', desc_vi:'Cồi sò điệp Nhật áp chảo vàng đều, ăn kèm rau củ và nước sốt.', desc_en:'Pan-seared Japanese scallops with seasonal vegetables and a delicate sauce.', price:'399k' },
+        ]
+      }
+    ]
+  },
+  pasta: {
+    cats: [
+      {
+        label: { vi:'Spaghetti', en:'Spaghetti' },
+        items: [
+          { vi:'Mỳ Ý Bolognese', en:'Bolognese Spaghetti', desc_vi:'Mỳ Ý sốt bò băm cổ điển, ăn kèm sốt cà chua và phô mai Parmesan.', desc_en:'Classic spaghetti with Bolognese sauce and Parmesan cheese.', price:'120k' },
+          { vi:'Mỳ Ý Pesto', en:'Pesto Spaghetti', desc_vi:'Mỳ Ý trộn sốt pesto húng quế tươi và phô mai Parmesan.', desc_en:'Spaghetti tossed in fresh basil pesto and Parmesan cheese.', price:'130k' },
+          { vi:'Mỳ Ý Carbonara', en:'Carbonara', desc_vi:'Mỳ Ý Carbonara béo ngậy và phô mai Parmesan.', desc_en:'A creamy carbonara with a blend of Parmesan cheese.', price:'140k' },
+          { vi:'Mỳ Ý Hải Sản', en:'Seafood Spaghetti', desc_vi:'Mỳ Ý hải sản kết hợp tôm, mực và vẹm xanh.', desc_en:'Seafood spaghetti featuring shrimp, squid, and green mussels.', price:'160k' },
+        ]
+      },
+      {
+        label: { vi:'Penne', en:'Penne' },
+        items: [
+          { vi:'Nui Bỏ Lò Phô Mai', en:'Baked Penne & Cheese', desc_vi:'Mì ống đút lò cùng mông bò, phô mai Anchor và Parmesan.', desc_en:'Oven-baked penne with beef, Anchor cheese and Parmesan.', price:'180k' },
+          { vi:'Penne Lamb Chop', en:'Penne with Lamb Chop', desc_vi:'Mì ống penne dùng kèm sườn cừu, phô mai Parmesan và nước sốt đậm vị.', desc_en:'Penne pasta served with lamb chop, Parmesan and a flavorful sauce.', price:'249k' },
+        ]
+      }
+    ]
+  },
+  pizza: {
+    cats: [
+      {
+        label: { vi:'Pizza Tươi', en:'Artisan Pizza' },
+        items: [
+          { vi:'Pizza Cà Chua', en:'Pizza Margherita', desc_vi:'Pizza cổ điển với sốt cà chua, phô mai mozzarella tươi và lá húng quế.', desc_en:'Classic pizza with tomato sauce, fresh mozzarella and basil leaves.', price:'179k' },
+          { vi:'Pizza Bò Băm', en:'Minced Beef Pizza', desc_vi:'Pizza với bò bằm đậm đà, xúc xích, ngô ngọt và phô mai béo ngậy.', desc_en:'Minced beef, sausage, sweet corn and rich cheese pizza.', price:'199k' },
+          { vi:'Pizza Hawaii', en:'Hawaiian Pizza', desc_vi:'Sự kết hợp hài hòa giữa giăm bông, dứa tươi và phô mai mozzarella.', desc_en:'Ham, fresh pineapple, and mozzarella cheese on tomato sauce.', price:'209k' },
+          { vi:'Pizza 4 Phô Mai', en:'Quattro Formaggi Pizza', desc_vi:'Pizza đặc biệt với bốn loại phô mai: mozzarella, blue cheese, parmesan và cheddar.', desc_en:'Special pizza with mozzarella, blue cheese, parmesan and cheddar.', price:'219k' },
+          { vi:'Pizza Pepperoni', en:'Pepperoni Pizza', desc_vi:'Pizza với xúc xích cay, phô mai Anchor, Queso và Parmesan.', desc_en:'Classic pizza topped with spicy sausage, Anchor, Queso and Parmesan cheese.', price:'230k' },
+          { vi:'Pizza Cá Hồi', en:'Salmon Pizza', desc_vi:'Pizza với cá hồi, phô mai Anchor, Queso và Parmesan béo thơm.', desc_en:'Salmon, Anchor cheese, Queso cheese and Parmesan pizza.', price:'240k' },
+          { vi:'Pizza Hải Sản', en:'Seafood Pizza', desc_vi:'Pizza với mực giòn, tôm tươi, cá hồi béo ngậy và phô mai mozzarella.', desc_en:'Tender squid, fresh shrimp, salmon and mozzarella cheese pizza.', price:'279k' },
+        ]
+      }
+    ]
+  },
+  platter: {
+    cats: [
+      {
+        label: { vi:'Best with Wines', en:'Best with Wines' },
+        items: [
+          { vi:'Xúc Xích Toulouse Nướng', en:'Grilled Toulouse Sausages', desc_vi:'Xúc xích Toulouse xông khói nướng kèm các loại gia vị.', desc_en:'Toulouse sausage grilled with spices.', price:'109k' },
+          { vi:'Đĩa Đồ Chiên Tổng Hợp', en:'Fried Mix Party Platter', desc_vi:'Mực chiên, khoai tây chiên, phô mai que và xúc xích.', desc_en:'Fried calamari rings, French fries, cheese sticks and sausages.', price:'239k' },
+          { vi:'Đùi Lợn Muối Tây Ban Nha', en:'Spanish Cured Ham', desc_vi:'Đùi lợn muối Tây Ban Nha với hương vị mặn nhẹ đặc trưng, thơm béo tự nhiên.', desc_en:'Traditional Spanish cured ham with a delicate salty flavor and rich aroma.', price:'299k' },
+          { vi:'Đĩa Thịt Nguội Tổng Hợp', en:'Cold Cut Platter', desc_vi:'Giăm bông xông khói, salami, các loại thịt nguội ăn kèm bánh mì bơ tỏi.', desc_en:'Imported cold cuts including smoked ham, salami served with garlic butter bread.', price:'359k' },
+        ]
+      },
+      {
+        label: { vi:'Burger', en:'Burger' },
+        items: [
+          { vi:'Burger Gà', en:'Chicken Burger', desc_vi:'Burger gà rán ăn kèm rau củ, phô mai cheddar và nước sốt.', desc_en:'Fried chicken burger with vegetables, cheddar cheese and sauce.', price:'150k' },
+          { vi:'Burger Bò Truyền Thống', en:'Classic Beef Burger', desc_vi:'Burger thịt bò ăn kèm rau củ, phô mai cheddar, bacon và nước sốt.', desc_en:'Beef burger with vegetables, cheddar cheese, bacon and sauce.', price:'170k' },
+        ]
+      }
+    ]
+  },
+  sides: {
+    cats: [
+      {
+        label: { vi:'Khoai Tây & Bánh Mì', en:'Potato & Bread' },
+        items: [
+          { vi:'Khoai Tây Nghiền', en:'Mashed Potatoes', desc_vi:'Khoai tây nghiền mềm mịn, béo ngậy từ bơ và kem tươi.', desc_en:'Smooth and creamy mashed potatoes, made with butter and cream.', price:'55k' },
+          { vi:'Khoai Tây Chiên', en:'Classic French Fries', desc_vi:'Khoai tây chiên giòn rụm, đậm đà vị muối.', desc_en:'Crispy French fries tossed in salt.', price:'55k' },
+          { vi:'Khoai Tây Bổ Cau', en:'Potato Wedges', desc_vi:'Khoai tây bổ cau vàng giòn, nêm nếm hoàn hảo với gia vị và thảo mộc.', desc_en:'Crispy golden potato wedges, perfectly seasoned with spices and herbs.', price:'55k' },
+          { vi:'Bánh Mì Bơ Tỏi', en:'Garlic Butter Bread', desc_vi:'Bánh mì bơ tỏi giòn tan, thơm lừng vị bơ và tỏi.', desc_en:'Crispy garlic bread, perfectly toasted and packed with flavor.', price:'55k' },
+          { vi:'Bánh Mì Tỏi Phô Mai', en:'Garlic Cheese Bread', desc_vi:'Bánh mì tẩm ướp với tỏi, phô mai và các loại gia vị.', desc_en:'Bread flavored with garlic, cheese and spices.', price:'79k' },
+        ]
+      }
+    ]
+  },
+  dessert: {
+    cats: [
+      {
+        label: { vi:'Italian-style Desserts', en:'Italian-style Desserts' },
+        items: [
+          { vi:'Panna Cotta', en:'Panna Cotta', desc_vi:'Mứn tráng miệng mềm mịn với hương vị sữa béo nhẹ, ngọt dịu và dễ ăn.', desc_en:'A smooth and creamy dessert with a light, delicate sweetness.', price:'35k' },
+          { vi:'Tiramisu', en:'Tiramisu', desc_vi:'Bánh tiramisu với lớp kem mascarpone béo mịn, vị cà phê đậm nhẹ và cân bằng.', desc_en:'A classic Italian dessert with creamy mascarpone and a subtle coffee flavor.', price:'50k' },
+        ]
+      }
+    ]
+  },
+  drinks: {
+    cats: [
+      {
+        label: { vi:'Nước & Nước Trái Cây', en:'Water & Juices' },
+        items: [
+          { vi:'Nước Khoáng Lavie', en:'Lavie Mineral Water', desc_vi:'Một chai nước khoáng La Vie tinh khiết.', desc_en:'A bottle of pure, refreshing La Vie mineral water.', price:'18k' },
+          { vi:'Nước Chanh Tươi', en:'Fresh Lemon Juice', desc_vi:'Nước chanh tươi mát lạnh.', desc_en:'Freshly squeezed lemonade.', price:'30k' },
+          { vi:'Nước Cam Tươi', en:'Fresh Orange Juice', desc_vi:'Nước cam tươi mát lạnh.', desc_en:'Freshly squeezed orange juice.', price:'55k' },
+        ]
+      },
+      {
+        label: { vi:'Bia & Nước Ngọt', en:'Beer & Soft Drinks' },
+        items: [
+          { vi:'Bia Sài Gòn', en:'Sai Gon Beer', desc_vi:'Nồng độ 4.9%, sản xuất tại Việt Nam từ 100% lúa mạch.', desc_en:'4.9% alcohol, made in Vietnam from 100% barley.', price:'30k' },
+          { vi:'Coca / Pepsi / 7-Up / Soda', en:'Coca / Pepsi / 7-Up / Soda', desc_vi:'Một lon nước giải khát có ga, mát lạnh.', desc_en:'A can of cold, carbonated soft drink.', price:'25k' },
+          { vi:'Coca Light', en:'Coca-Cola Light', desc_vi:'Coca Light ít calo, phù hợp cho người ăn kiêng.', desc_en:'Low-calorie Coca-Cola Light, suitable for a diet.', price:'30k' },
+          { vi:'Bia Heineken', en:'Heineken Beer', desc_vi:'Nồng độ 5%, xuất xứ Hà Lan. Lúa mạch và hoa bia.', desc_en:'5% alcohol, origin Netherlands. Barley and hops.', price:'40k' },
+        ]
+      },
+      {
+        label: { vi:'Rượu Vang', en:'Wines' },
+        items: [
+          { vi:'B Royal Cabernet Sauvignon (ly)', en:'B Royal Cabernet Sauvignon (glass)', desc_vi:'Vang Đỏ, 15%, Nam Phi, Cabernet Sauvignon, 150ml.', desc_en:'Red Wine, 15%, South Africa, Cabernet Sauvignon, 150ml.', price:'69k' },
+          { vi:'Terre Forti – Merlot D\'Italia', en:'Terre Forti – Merlot D\'Italia', desc_vi:'Vang Đỏ, 13%, Ý, Merlot, 750ml.', desc_en:'Red Wine, 13%, Italy, Merlot, 750ml.', price:'399k' },
+          { vi:'Chantecaille – Bordeaux Red', en:'Chantecaille – Bordeaux Red', desc_vi:'Vang Đỏ, 13.5%, Pháp, Cabernet Sauvignon & Merlot, 750ml.', desc_en:'Red Wine, 13.5%, France, Cabernet Sauvignon & Merlot, 750ml.', price:'619k' },
+          { vi:'Maison Castel – Merlot IGP d\'Oc', en:'Maison Castel – Merlot IGP d\'Oc', desc_vi:'Vang Đỏ, 13%, Pháp, Merlot, 750ml.', desc_en:'Red Wine, 13%, France, Merlot, 750ml.', price:'850k' },
+          { vi:'Purato Siccari Appassimento Organic', en:'Purato Siccari Appassimento Organic', desc_vi:'Vang Đỏ, 14.5%, Ý, Syrah & Nero d\'Avola, 750ml.', desc_en:'Red Wine, 14.5%, Italy, Syrah & Nero d\'Avola, 750ml.', price:'1,050k' },
+        ]
+      }
+    ]
+  }
+};
 
-if (navToggle && navLinks) {
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(open));
+/* ─── Language ───────────────────────────────────────────── */
+let lang = localStorage.getItem('lang') || 'vi';
+
+function applyLang() {
+  document.querySelectorAll('[data-tx]').forEach(el => {
+    const key = el.dataset.tx;
+    const val = TX[lang][key];
+    if (val !== undefined) el.innerHTML = val;
   });
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+  document.getElementById('lang-toggle').textContent = lang === 'vi' ? 'EN' : 'VI';
+  document.documentElement.lang = lang;
+  renderMenuPanels();
+}
+
+document.getElementById('lang-toggle').addEventListener('click', () => {
+  lang = lang === 'vi' ? 'en' : 'vi';
+  localStorage.setItem('lang', lang);
+  applyLang();
+});
+
+/* ─── Menu Render ────────────────────────────────────────── */
+function formatPrice(p) { return p; }
+
+function renderMenuPanels() {
+  const panels = document.getElementById('menu-panels');
+  panels.innerHTML = '';
+  const activeTab = document.querySelector('.menu-tab.active')?.dataset.tab || 'steak';
+
+  Object.entries(MENU).forEach(([tabKey, tabData]) => {
+    const panel = document.createElement('div');
+    panel.className = 'menu-panel' + (tabKey === activeTab ? ' active' : '');
+    panel.id = 'panel-' + tabKey;
+
+    tabData.cats.forEach(cat => {
+      const catHead = document.createElement('h3');
+      catHead.className = 'menu-cat';
+      catHead.textContent = cat.label[lang];
+      panel.appendChild(catHead);
+
+      const grid = document.createElement('div');
+      grid.className = 'menu-grid';
+
+      cat.items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `
+          <div class="menu-card__name">${item[lang === 'vi' ? 'vi' : 'en']}</div>
+          ${lang === 'vi' ? `<div class="menu-card__name-en">${item.en}</div>` : ''}
+          <div class="menu-card__desc">${item['desc_' + lang]}</div>
+          <div class="menu-card__footer">
+            <span class="menu-card__price">${formatPrice(item.price)}</span>
+            ${item.badge ? `<span class="menu-card__badge menu-card__badge--special">${item.badge}</span>` : ''}
+          </div>`;
+        grid.appendChild(card);
+      });
+      panel.appendChild(grid);
     });
+    panels.appendChild(panel);
+  });
+
+  // Stagger cards in active panel
+  setTimeout(() => staggerMenuCards(activeTab), 50);
+}
+
+function staggerMenuCards(tabKey) {
+  const panel = document.getElementById('panel-' + tabKey);
+  if (!panel) return;
+  panel.querySelectorAll('.menu-card').forEach((el, i) => {
+    setTimeout(() => el.classList.add('bento-in'), i * 60);
   });
 }
 
-/* ─── SMOOTH SCROLL ─────────────────────────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
-    const id = anchor.getAttribute('href');
-    if (id === '#') return;
-    const target = document.querySelector(id);
+/* ─── Menu Tabs ──────────────────────────────────────────── */
+document.getElementById('menu-tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.menu-tab');
+  if (!btn) return;
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderMenuPanels();
+});
+
+/* ─── NAV: scroll + mobile ───────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+document.getElementById('nav-burger').addEventListener('click', function() {
+  const expanded = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', String(!expanded));
+  document.getElementById('nav-links').classList.toggle('open', !expanded);
+});
+
+document.querySelectorAll('.nav__link').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('nav-burger').setAttribute('aria-expanded', 'false');
+  });
+});
+
+/* ─── Smooth anchor scroll ───────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    const offset = parseInt(getComputedStyle(document.documentElement)
-      .getPropertyValue('--nav-h')) || 72;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    const top = target.getBoundingClientRect().top + window.scrollY - 72;
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
 
-/* ─── HERO PARALLAX ─────────────────────────────────────── */
-function parallaxHero() {
+/* ─── Hero Parallax ──────────────────────────────────────── */
+const heroBg = document.querySelector('.hero__bg');
+function onScroll() {
   if (!heroBg) return;
-  heroBg.style.transform = `translateY(${window.scrollY * 0.3}px) scale(1.05)`;
-}
-
-/* ─── SCROLL REVEAL ─────────────────────────────────────── */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObs.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
-
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-  if (el.closest('.hero')) return;
-  const rect = el.getBoundingClientRect();
-  if (rect.top < window.innerHeight + 100) {
-    el.classList.add('visible');
-  } else {
-    revealObs.observe(el);
+  const y = window.scrollY;
+  if (y < window.innerHeight) {
+    heroBg.style.transform = `translateY(${y * 0.3}px)`;
   }
-});
-
-/* ─── BENTO GRID STAGGER ────────────────────────────────── */
-const bentoGrid = document.getElementById('bento-grid');
-if (bentoGrid) {
-  const bentoObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll('.bento-card').forEach((card, i) => {
-        setTimeout(() => card.classList.add('bento-in'), i * 110);
-      });
-      bentoObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.1 });
-  bentoObs.observe(bentoGrid);
 }
+window.addEventListener('scroll', onScroll, { passive: true });
 
-/* ─── MASONRY GALLERY STAGGER ───────────────────────────── */
-const masonryGrid = document.getElementById('masonry-grid');
-if (masonryGrid) {
-  const masonryObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll('.masonry-item').forEach((item, i) => {
-        setTimeout(() => item.classList.add('masonry-in'), i * 90);
-      });
-      masonryObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.05 });
-  masonryObs.observe(masonryGrid);
-}
+/* ─── Scroll Reveal (generic .reveal elements) ───────────── */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-/* ─── FEATURE CARD 3D TILT ──────────────────────────────── */
-document.querySelectorAll('.feature').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const rotX = ((y - cy) / cy) * -9;
-    const rotY = ((x - cx) / cx) * 9;
-    card.style.transform = `perspective(500px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.06)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
-});
-
-/* ─── STATS COUNTER ANIMATION ───────────────────────────── */
+/* ─── Stats Counter ──────────────────────────────────────── */
 const statsRow = document.querySelector('.stats-row');
 if (statsRow) {
-  const counterObs = new IntersectionObserver(entries => {
+  new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      counterObs.unobserve(entry.target);
       entry.target.querySelectorAll('.stat__num[data-to]').forEach(el => {
         const to     = parseFloat(el.dataset.to);
         const suffix = el.dataset.suffix || '';
         const dec    = to % 1 !== 0 ? 1 : 0;
-        const plusEl = el.querySelector('.stat__plus');
-        const node   = el.childNodes[0];
-        if (!node) return;
-        const t0 = performance.now();
-        const dur = 1600;
+        const t0 = performance.now(), dur = 1600;
         (function step(now) {
           const p = Math.min((now - t0) / dur, 1);
           const v = 1 - Math.pow(1 - p, 3);
-          node.textContent = (v * to).toFixed(dec) + suffix;
+          el.textContent = (v * to).toFixed(dec) + suffix;
           if (p < 1) requestAnimationFrame(step);
-          else {
-            node.textContent = to.toFixed(dec) + suffix;
-            if (plusEl) el.appendChild(plusEl);
-          }
+          else el.textContent = to.toFixed(dec) + suffix;
         })(t0);
       });
+      statsRowObs.unobserve(entry.target);
     });
+  }, { threshold: 0.6 }).observe(statsRow);
+  var statsRowObs = new IntersectionObserver(() => {}, {});
+  // Simpler single-use pattern:
+  const statsObs = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    statsRow.querySelectorAll('.stat__num[data-to]').forEach(el => {
+      const to  = parseFloat(el.dataset.to);
+      const sfx = el.dataset.suffix || '';
+      const dec = to % 1 !== 0 ? 1 : 0;
+      const t0 = performance.now(), dur = 1600;
+      (function step(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const v = 1 - Math.pow(1 - p, 3);
+        el.textContent = (v * to).toFixed(dec) + sfx;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = to.toFixed(dec) + sfx;
+      })(t0);
+    });
+    statsObs.unobserve(statsRow);
   }, { threshold: 0.6 });
-  counterObs.observe(statsRow);
+  statsObs.observe(statsRow);
 }
 
-/* ─── BOOKING FORM ──────────────────────────────────────── */
+/* ─── Gallery Stagger ────────────────────────────────────── */
+const galleryGrid = document.getElementById('masonry-grid');
+if (galleryGrid) {
+  new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    galleryGrid.querySelectorAll('.masonry-item').forEach((el, i) =>
+      setTimeout(() => el.classList.add('bento-in'), i * 90)
+    );
+  }, { threshold: 0.1 }).observe(galleryGrid);
+}
+
+/* ─── Testimonials Stagger ───────────────────────────────── */
+const testGrid = document.getElementById('test-grid');
+if (testGrid) {
+  new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    testGrid.querySelectorAll('.test-card').forEach((el, i) =>
+      setTimeout(() => el.classList.add('bento-in'), i * 150)
+    );
+  }, { threshold: 0.1 }).observe(testGrid);
+}
+
+/* ─── 3D Tilt on .tilt-card ──────────────────────────────── */
+document.querySelectorAll('.tilt-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r  = card.getBoundingClientRect();
+    const rx = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -8;
+    const ry = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  8;
+    card.style.transform = `perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.04)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+/* ─── Booking Form ───────────────────────────────────────── */
 const form    = document.getElementById('booking-form');
 const formMsg = document.getElementById('form-msg');
+const dateInput = document.getElementById('f-date');
 
-if (form && formMsg) {
-  const dateInput = document.getElementById('f-date');
-  if (dateInput) {
-    dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
-  }
+// Set min date = today
+if (dateInput) {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+}
 
+function showMsg(text, type) {
+  formMsg.textContent = text;
+  formMsg.className = 'form-msg ' + type;
+  if (type === 'success') setTimeout(() => { formMsg.textContent = ''; formMsg.className = 'form-msg'; }, 8000);
+}
+
+if (form) {
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    const data   = new FormData(form);
-    const name   = (data.get('name')   || '').trim();
-    const phone  = (data.get('phone')  || '').trim();
-    const date   = data.get('date');
-    const time   = data.get('time');
-    const guests = data.get('guests');
-    const note   = (data.get('note')   || '').trim();
+    const name   = document.getElementById('f-name').value.trim();
+    const phone  = document.getElementById('f-phone').value.trim();
+    const guests = parseInt(document.getElementById('f-guests').value, 10);
+    const date   = document.getElementById('f-date').value;
+    const time   = document.getElementById('f-time').value;
+    const notes  = document.getElementById('f-notes').value.trim();
 
-    if (!name || !phone || !date || !time) {
-      showMsg('error', 'Vui lòng điền đầy đủ thông tin bắt buộc (*).');
-      return;
-    }
-    if (!/^[\d\s\+\-\(\)]{8,15}$/.test(phone)) {
-      showMsg('error', 'Số điện thoại không hợp lệ.');
-      return;
-    }
-    if (guests && (Number(guests) < 1 || Number(guests) > 50)) {
-      showMsg('error', 'Số khách phải từ 1 đến 50.');
-      return;
-    }
+    if (!name || !phone || !date || !time) { showMsg(TX[lang].form_val, 'error'); return; }
+    if (!/^[\d\s\+\-\(\)]{8,15}$/.test(phone)) { showMsg(TX[lang].form_phone_val, 'error'); return; }
+    if (guests < 1 || guests > 50) { showMsg(TX[lang].form_val, 'error'); return; }
 
-    const btn = form.querySelector('[type="submit"]');
+    const btn = document.getElementById('form-submit');
     btn.disabled = true;
-    btn.textContent = 'Đang gửi...';
+    btn.querySelector('span').textContent = '...';
 
-    if (window.db) {
-      const { error } = await window.db.from('kobe_bookings').insert([{
-        name, phone, date, time,
-        guests: guests ? Number(guests) : 2,
-        note
-      }]);
-      if (error) console.error('Booking error:', error.message);
+    try {
+      const { error } = await window.db
+        .from('kobe_bookings')
+        .insert([{ name, phone, guests, date, time, notes }]);
+      if (error) throw error;
+      showMsg(TX[lang].form_ok, 'success');
+      form.reset();
+      dateInput.min = dateInput.min; // re-apply min
+    } catch {
+      showMsg(TX[lang].form_err, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = TX[lang].form_submit;
     }
-
-    showMsg('success',
-      `Cảm ơn ${name}! Yêu cầu đặt bàn đã được ghi nhận — chúng tôi sẽ gọi xác nhận sớm nhất qua số ${phone}.`
-    );
-    form.reset();
-    btn.disabled = false;
-    btn.textContent = 'Xác Nhận Đặt Bàn';
-    setTimeout(() => {
-      formMsg.textContent = '';
-      formMsg.className = '';
-    }, 8000);
   });
 }
 
-function showMsg(type, text) {
-  if (!formMsg) return;
-  formMsg.className = type;
-  formMsg.textContent = text;
-  formMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
+/* ─── Init ───────────────────────────────────────────────── */
+applyLang();

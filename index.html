@@ -3,480 +3,379 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kobe Steak – Nhà hàng bít tết Âu phong tọa lạc tại Landmark Ecopark, Hưng Yên. Thưởng thức Wagyu Ribeye, Tenderloin, và các món Âu đẳng cấp trong không gian sang trọng ven hồ.">
   <title>Kobe Steak – Steakhouse Ecopark, Hưng Yên</title>
-
+  <meta name="description" content="Kobe Steak – Nhà hàng bít tết Âu phong cách tọa lạc tại Landmark Ecopark, Hưng Yên. Wagyu, Tenderloin, Seafood, Pizza và hơn 60 món Âu đẳng cấp.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Kobe Steak – Steakhouse Ecopark">
+  <meta property="og:description" content="Nhà hàng steak cao cấp tại Landmark Ecopark, Hưng Yên">
+  <meta property="og:type" content="restaurant">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%23231508'/><text y='.92em' font-size='58' text-anchor='middle' x='50' fill='%23c9973a' font-family='serif' font-weight='bold'>K</text></svg>">
 </head>
 <body>
 
-  <!-- ─── NAV ─────────────────────────────────── -->
-  <nav class="site-nav" id="site-nav" role="navigation" aria-label="Menu chính">
-    <a href="#hero" class="nav-logo" aria-label="Trang chủ Kobe Steak">
-      <div class="nav-logo__badge">
-        <span class="nav-logo__sub">STEAK</span>
-        <span class="nav-logo__main">KOBE</span>
-        <span class="nav-logo__sub">ECOPARK</span>
-      </div>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__logo">
+      <span class="nav__logo-kobe">KOBE</span>
+      <span class="nav__logo-steak">STEAK</span>
     </a>
-
-    <button class="nav-toggle" id="nav-toggle"
-            aria-expanded="false" aria-label="Mở / đóng menu điều hướng">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="#about">Câu Chuyện</a></li>
-      <li><a href="#menu">Thực Đơn</a></li>
-      <li><a href="#experience">Không Gian</a></li>
-      <li><a href="#gallery">Thư Viện</a></li>
-      <li class="nav-cta-mobile"><a href="#booking" class="nav-cta">Đặt Bàn</a></li>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#about"   class="nav__link" data-tx="nav_about">Về chúng tôi</a></li>
+      <li><a href="#menu"    class="nav__link" data-tx="nav_menu">Thực đơn</a></li>
+      <li><a href="#gallery" class="nav__link" data-tx="nav_gallery">Không gian</a></li>
+      <li><a href="#booking" class="nav__link nav__link--cta" data-tx="nav_book">Đặt bàn</a></li>
     </ul>
+    <div class="nav__actions">
+      <button class="nav__lang" id="lang-toggle" aria-label="Switch language">EN</button>
+      <button class="nav__burger" id="nav-burger" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
 
-    <a href="#booking" class="nav-cta nav-cta-desktop">Đặt Bàn</a>
-  </nav>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow" data-tx="hero_eyebrow">Landmark Ecopark · Hưng Yên</p>
+    <h1 class="hero__title">
+      <span data-tx="hero_line1">Nghệ Thuật</span><br>
+      <em data-tx="hero_line2">Bít Tết Âu</em>
+    </h1>
+    <p class="hero__sub" data-tx="hero_sub">Hơn 60 món Âu đẳng cấp – từ Wagyu Tomahawk đến hải sản tươi sống, trong không gian sang trọng ven hồ</p>
+    <div class="hero__btns">
+      <a href="#booking" class="btn btn--gold" data-tx="hero_book">Đặt bàn ngay</a>
+      <a href="#menu"    class="btn btn--ghost" data-tx="hero_menu">Xem thực đơn</a>
+    </div>
+  </div>
+  <div class="hero__scroll-hint">
+    <span data-tx="hero_scroll">Khám phá</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
 
-  <main>
-
-    <!-- ─── HERO ──────────────────────────────── -->
-    <section class="hero" id="hero" aria-label="Kobe Steak – Nhà hàng bít tết cao cấp Ecopark">
-      <div class="hero__bg" role="img" aria-label="Bít tết Wagyu Kobe Steak"></div>
-      <div class="hero__overlay" aria-hidden="true"></div>
-
-      <div class="hero__content">
-        <p class="hero__eyebrow reveal">STEAKHOUSE &middot; ECOPARK &middot; HƯNG YÊN</p>
-        <h1 class="hero__title reveal">
-          <span class="hero__title-line">Kobe</span>
-          <span class="hero__title-line hero__title-line--italic">Steak</span>
-        </h1>
-        <p class="hero__subtitle reveal">
-          Nghệ thuật nướng bít tết — chín tới từng phần,<br>
-          thưởng thức trọn vẹn trong không gian Âu phong, bên hồ Ecopark tĩnh lặng.
-        </p>
-        <div class="hero__ctas reveal">
-          <a href="#menu" class="btn btn--gold">Khám Phá Thực Đơn</a>
-          <a href="#booking" class="btn btn--outline">Đặt Bàn Ngay</a>
-        </div>
-        <div class="hero__scroll" aria-hidden="true">
-          <div class="hero__scroll-line"></div>
-          <span>Kéo xuống</span>
-        </div>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about__img-wrap">
+    <div class="about__img"></div>
+  </div>
+  <div class="about__content">
+    <p class="section-eyebrow" data-tx="about_eyebrow">Câu chuyện của chúng tôi</p>
+    <h2 class="section-title" data-tx="about_title">Hơn Cả Một Bữa Ăn</h2>
+    <p class="about__text" data-tx="about_p1">Kobe Steak ra đời từ niềm đam mê với ẩm thực Âu chính thống — nơi mỗi miếng thịt được chọn lựa kỹ càng từ những trang trại hàng đầu Mỹ, Úc và New Zealand.</p>
+    <p class="about__text" data-tx="about_p2">Tọa lạc tại Landmark Ecopark giữa không gian xanh mát ven hồ, chúng tôi mang đến trải nghiệm ẩm thực sang trọng kết hợp sự ấm áp của bữa ăn gia đình.</p>
+    <div class="about__features">
+      <div class="about__feature">
+        <div class="about__feature-icon">🥩</div>
+        <span data-tx="about_f1">Thịt nhập khẩu cao cấp</span>
       </div>
-
-      <div class="hero__badge" aria-label="100% khách hài lòng">
-        <span class="hero__badge-num">100%</span>
-        <span class="hero__badge-label">Khách hài lòng</span>
+      <div class="about__feature">
+        <div class="about__feature-icon">🍷</div>
+        <span data-tx="about_f2">Wine &amp; cocktail đặc sắc</span>
       </div>
-    </section>
-
-    <!-- ─── ABOUT (Split-screen) ─────────────── -->
-    <section class="split-section" id="about" aria-labelledby="about-h">
-      <div class="split-section__image split-section__image--about reveal-left"
-           role="img" aria-label="Không gian nhà hàng Kobe Steak Ecopark">
-        <div class="split-section__overlay" aria-hidden="true"></div>
+      <div class="about__feature">
+        <div class="about__feature-icon">🌿</div>
+        <span data-tx="about_f3">Không gian ven hồ Ecopark</span>
       </div>
-
-      <div class="split-section__content reveal-right">
-        <div class="split-section__inner">
-          <p class="eyebrow">Câu Chuyện Của Chúng Tôi</p>
-          <h2 class="section-heading" id="about-h">
-            Nơi Bít Tết<br>Trở Thành<br>Nghệ Thuật
-          </h2>
-          <div class="gold-divider"></div>
-          <p class="body-text">
-            Kobe Steak ra đời từ niềm đam mê với ẩm thực Âu Mỹ và khát vọng mang
-            đến những miếng bít tết hoàn hảo nhất cho thực khách Ecopark.
-          </p>
-          <p class="body-text">
-            Tọa lạc tại Landmark Ecopark, chúng tôi chắt lọc từng phần thịt,
-            kiểm soát nhiệt độ đến từng độ Celsius — để mỗi lần thưởng thức
-            là một kỷ niệm không quên bên hồ tĩnh lặng.
-          </p>
-          <div class="stats-row">
-            <div class="stat">
-              <span class="stat__num" data-to="2.4" data-suffix="K">2.4K<span class="stat__plus">+</span></span>
-              <span class="stat__label">Người theo dõi</span>
-            </div>
-            <div class="stat">
-              <span class="stat__num" data-to="100" data-suffix="%">100%</span>
-              <span class="stat__label">Đánh giá tích cực</span>
-            </div>
-            <div class="stat">
-              <span class="stat__num" data-to="23" data-suffix="K">23K</span>
-              <span class="stat__label">Lượt xem video</span>
-            </div>
-          </div>
-        </div>
+      <div class="about__feature">
+        <div class="about__feature-icon">👨‍🍳</div>
+        <span data-tx="about_f4">Đầu bếp Âu chuyên nghiệp</span>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- ─── MENU (Bento Grid) ─────────────────── -->
-    <section class="menu-section" id="menu" aria-labelledby="menu-h">
-      <div class="menu-section__header reveal">
-        <p class="eyebrow eyebrow--gold">Thực Đơn Đặc Sắc</p>
-        <h2 class="section-heading section-heading--light" id="menu-h">
-          Những Lựa Chọn<br>Đỉnh Cao
-        </h2>
-        <div class="gold-divider gold-divider--center"></div>
+<!-- STATS -->
+<section class="stats" id="stats">
+  <div class="stats__container">
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat__num" data-to="3" data-suffix="+">&nbsp;</span>
+        <span class="stat__label" data-tx="stat_years">Năm hoạt động</span>
       </div>
-
-      <div class="bento-grid" id="bento-grid">
-        <!-- Signature: Kobe Ribeye (spans 2 rows) -->
-        <article class="bento-card bento-card--ribeye" aria-label="Kobe Ribeye">
-          <div class="bento-card__overlay" aria-hidden="true"></div>
-          <div class="bento-card__content">
-            <span class="bento-card__tag">Signature</span>
-            <h3 class="bento-card__title">Kobe Ribeye</h3>
-            <p class="bento-card__desc">Thăn lưng bò Wagyu chuẩn Nhật, marbling 8+</p>
-            <span class="bento-card__price">từ 680k</span>
-          </div>
-        </article>
-
-        <!-- Tenderloin -->
-        <article class="bento-card bento-card--tenderloin" aria-label="Tenderloin">
-          <div class="bento-card__overlay" aria-hidden="true"></div>
-          <div class="bento-card__content">
-            <span class="bento-card__tag">Premium</span>
-            <h3 class="bento-card__title">Tenderloin</h3>
-            <p class="bento-card__desc">Thăn nội mềm tuyệt đối — tinh tế từng thớ thịt</p>
-            <span class="bento-card__price">từ 520k</span>
-          </div>
-        </article>
-
-        <!-- Sirloin -->
-        <article class="bento-card bento-card--sirloin" aria-label="Sirloin Steak">
-          <div class="bento-card__overlay" aria-hidden="true"></div>
-          <div class="bento-card__content">
-            <span class="bento-card__tag">Classic</span>
-            <h3 class="bento-card__title">Sirloin Steak</h3>
-            <p class="bento-card__desc">Thăn ngoại đậm vị, viền giòn rụm đặc trưng</p>
-            <span class="bento-card__price">từ 380k</span>
-          </div>
-        </article>
-
-        <!-- Combo (wide) -->
-        <article class="bento-card bento-card--combo" aria-label="Kobe Combo Set">
-          <div class="bento-card__overlay" aria-hidden="true"></div>
-          <div class="bento-card__content">
-            <span class="bento-card__tag">Set Menu</span>
-            <h3 class="bento-card__title">Kobe Combo</h3>
-            <p class="bento-card__desc">Bít tết + Súp kem + Salad tươi + Tráng miệng + Thức uống — trải nghiệm trọn vẹn từ đầu đến cuối</p>
-            <span class="bento-card__price">từ 450k/người</span>
-          </div>
-        </article>
-
-        <!-- Wine & Drinks (full width) -->
-        <article class="bento-card bento-card--wine" aria-label="Wine và thức uống">
-          <div class="bento-card__overlay" aria-hidden="true"></div>
-          <div class="bento-card__content">
-            <div>
-              <span class="bento-card__tag">Pairing</span>
-              <h3 class="bento-card__title">Wine &amp; Drinks</h3>
-              <p class="bento-card__desc">Vang đỏ Pháp, cocktail đặc biệt và thức uống cao cấp — nâng tầm bữa ăn</p>
-            </div>
-            <span class="bento-card__price">từ 120k</span>
-          </div>
-        </article>
+      <div class="stat">
+        <span class="stat__num" data-to="60" data-suffix="+">&nbsp;</span>
+        <span class="stat__label" data-tx="stat_dishes">Món Âu đặc sắc</span>
       </div>
-
-      <p class="menu-note reveal">
-        Tất cả bít tết phục vụ kèm khoai tây chiên, rau củ nướng và nước chấm bí truyền<br>
-        Mức chín theo yêu cầu: <strong>Rare · Medium Rare · Medium · Well Done</strong>
-      </p>
-    </section>
-
-    <!-- ─── EXPERIENCE (Parallax) ─────────────── -->
-    <section class="experience-section" id="experience" aria-labelledby="exp-h">
-      <div class="parallax-bg parallax-bg--experience"
-           role="img" aria-label="Không gian nhà hàng Kobe Steak ban đêm" aria-hidden="true">
-        <div class="parallax-overlay" aria-hidden="true"></div>
+      <div class="stat">
+        <span class="stat__num" data-to="5" data-suffix="k+">&nbsp;</span>
+        <span class="stat__label" data-tx="stat_guests">Thực khách phục vụ</span>
       </div>
+      <div class="stat">
+        <span class="stat__num" data-to="4.9" data-suffix="★">&nbsp;</span>
+        <span class="stat__label" data-tx="stat_rating">Đánh giá trung bình</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="experience-content reveal">
-        <p class="eyebrow eyebrow--gold">Không Gian</p>
-        <h2 class="section-heading section-heading--light" id="exp-h">
-          Tinh Tế Đến<br>Từng Chi Tiết
-        </h2>
-        <div class="gold-divider gold-divider--center"></div>
-        <p class="body-text body-text--light body-text--centered">
-          Không gian L2.01S15 Landmark Ecopark được thiết kế theo phong cách Âu hiện đại —
-          ánh sáng ấm, nội thất sang trọng, nhìn ra hồ tĩnh lặng.
-        </p>
-        <div class="features-grid">
-          <div class="feature">
-            <span class="feature__icon" aria-hidden="true">🍽️</span>
-            <span class="feature__label">Dine In</span>
-          </div>
-          <div class="feature">
-            <span class="feature__icon" aria-hidden="true">🥡</span>
-            <span class="feature__label">Takeaway</span>
-          </div>
-          <div class="feature">
-            <span class="feature__icon" aria-hidden="true">🌿</span>
-            <span class="feature__label">Outdoor Seating</span>
-          </div>
-          <div class="feature">
-            <span class="feature__icon" aria-hidden="true">🎉</span>
-            <span class="feature__label">Private Events</span>
-          </div>
-        </div>
-        <div class="exp-ctas">
-          <a href="#booking" class="btn btn--gold">Đặt Bàn Ngay</a>
-          <a href="#gallery" class="btn btn--outline">Xem Không Gian</a>
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <p class="section-eyebrow" data-tx="menu_eyebrow">Thực đơn</p>
+    <h2 class="section-title" data-tx="menu_title">Hành Trình Ẩm Thực</h2>
+    <div class="menu-tabs" role="tablist" id="menu-tabs">
+      <button class="menu-tab active" data-tab="steak"     role="tab" data-tx="tab_steak">🥩 Steak</button>
+      <button class="menu-tab" data-tab="appetizer"        role="tab" data-tx="tab_app">🥗 Khai vị</button>
+      <button class="menu-tab" data-tab="main"             role="tab" data-tx="tab_main">🍗 Món chính</button>
+      <button class="menu-tab" data-tab="pasta"            role="tab" data-tx="tab_pasta">🍝 Pasta</button>
+      <button class="menu-tab" data-tab="pizza"            role="tab" data-tx="tab_pizza">🍕 Pizza</button>
+      <button class="menu-tab" data-tab="platter"          role="tab" data-tx="tab_platter">🧀 Platter</button>
+      <button class="menu-tab" data-tab="sides"            role="tab" data-tx="tab_sides">🍟 Món phụ</button>
+      <button class="menu-tab" data-tab="dessert"          role="tab" data-tx="tab_dessert">🍮 Tráng miệng</button>
+      <button class="menu-tab" data-tab="drinks"           role="tab" data-tx="tab_drinks">🍷 Đồ uống</button>
+    </div>
+    <div class="menu-panels" id="menu-panels"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="container">
+    <p class="section-eyebrow" data-tx="exp_eyebrow">Trải nghiệm</p>
+    <h2 class="section-title" data-tx="exp_title">Mọi Dịp Đều Đặc Biệt</h2>
+    <div class="exp-grid">
+      <div class="exp-card feature tilt-card">
+        <div class="exp-card__icon">🍽️</div>
+        <h3 class="exp-card__title" data-tx="exp_dinein">Dine In</h3>
+        <p class="exp-card__desc" data-tx="exp_dinein_d">Trải nghiệm ẩm thực đầy đủ trong không gian sang trọng, ấm cúng với view hồ Ecopark.</p>
+      </div>
+      <div class="exp-card feature tilt-card">
+        <div class="exp-card__icon">📦</div>
+        <h3 class="exp-card__title" data-tx="exp_takeaway">Takeaway</h3>
+        <p class="exp-card__desc" data-tx="exp_takeaway_d">Thưởng thức các món yêu thích tại nhà với đóng gói cẩn thận, giữ trọn hương vị.</p>
+      </div>
+      <div class="exp-card feature tilt-card">
+        <div class="exp-card__icon">🌳</div>
+        <h3 class="exp-card__title" data-tx="exp_outdoor">Outdoor Seating</h3>
+        <p class="exp-card__desc" data-tx="exp_outdoor_d">Bàn ngoài trời ven hồ – lý tưởng cho buổi tối lãng mạn hay họp mặt gia đình.</p>
+      </div>
+      <div class="exp-card feature tilt-card">
+        <div class="exp-card__icon">🎉</div>
+        <h3 class="exp-card__title" data-tx="exp_private">Private Events</h3>
+        <p class="exp-card__desc" data-tx="exp_private_d">Không gian riêng tư cho tiệc sinh nhật, kỷ niệm, họp mặt doanh nghiệp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <p class="section-eyebrow" data-tx="gal_eyebrow">Không gian</p>
+    <h2 class="section-title" data-tx="gal_title">Ảnh Nhà Hàng</h2>
+  </div>
+  <div class="masonry-grid" id="masonry-grid">
+    <div class="masonry-item"><img src="https://images.pexels.com/photos/3535383/pexels-photo-3535383.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Steak cao cấp" class="masonry-img" loading="lazy"></div>
+    <div class="masonry-item"><img src="https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Không gian nhà hàng" class="masonry-img" loading="lazy"></div>
+    <div class="masonry-item"><img src="https://images.unsplash.com/photo-1558030006-450675393462?w=800&auto=format&fit=crop" alt="Ribeye steak" class="masonry-img" loading="lazy"></div>
+    <div class="masonry-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop" alt="Bàn ăn Âu" class="masonry-img" loading="lazy"></div>
+    <div class="masonry-item"><img src="https://images.pexels.com/photos/2702805/pexels-photo-2702805.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wine đặc sắc" class="masonry-img" loading="lazy"></div>
+    <div class="masonry-item"><img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Không khí nhà hàng" class="masonry-img" loading="lazy"></div>
+    <div class="masonry-item"><img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&auto=format&fit=crop" alt="Tenderloin steak" class="masonry-img" loading="lazy"></div>
+    <div class="masonry-item"><img src="https://images.pexels.com/photos/1860208/pexels-photo-1860208.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Không gian Ecopark" class="masonry-img" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <p class="section-eyebrow" data-tx="test_eyebrow">Đánh giá</p>
+    <h2 class="section-title" data-tx="test_title">Khách Hàng Nói Gì</h2>
+    <div class="test-grid" id="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text" data-tx="test1_text">"Steak Tomahawk ở đây ngon nhất tôi từng ăn ở Việt Nam. Không gian ven hồ cực kỳ lãng mạn, phục vụ tận tình. Chắc chắn sẽ quay lại!"</p>
+        <div class="test-author">
+          <div class="test-avatar">M</div>
+          <div><strong>Minh Châu</strong><br><small>Google Review</small></div>
         </div>
       </div>
-    </section>
-
-    <!-- ─── GALLERY (Masonry) ─────────────────── -->
-    <section class="gallery-section" id="gallery" aria-labelledby="gallery-h">
-      <div class="gallery-header reveal">
-        <p class="eyebrow">Thư Viện Ảnh</p>
-        <h2 class="section-heading" id="gallery-h">Khoảnh Khắc<br>Tại Kobe</h2>
-      </div>
-      <div class="masonry-grid" id="masonry-grid">
-        <div class="masonry-item masonry-item--1">
-          <div class="masonry-img" role="img" aria-label="Không gian nhà hàng Kobe Steak"></div>
-        </div>
-        <div class="masonry-item masonry-item--2">
-          <div class="masonry-img" role="img" aria-label="Món ăn trình bày tại Kobe Steak"></div>
-        </div>
-        <div class="masonry-item masonry-item--3">
-          <div class="masonry-img" role="img" aria-label="Rượu vang Kobe Steak"></div>
-        </div>
-        <div class="masonry-item masonry-item--4">
-          <div class="masonry-img" role="img" aria-label="Bầu không khí tại Kobe Steak"></div>
-        </div>
-        <div class="masonry-item masonry-item--5">
-          <div class="masonry-img" role="img" aria-label="Món ăn đặc sắc Kobe Steak"></div>
-        </div>
-        <div class="masonry-item masonry-item--6">
-          <div class="masonry-img" role="img" aria-label="Bít tết Kobe tại Ecopark"></div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text" data-tx="test2_text">"Pizza và pasta rất chuẩn vị Ý. Phần Ribeye Úc mềm, thơm, sốt nấm tuyệt vời. Giá hợp lý so với chất lượng."</p>
+        <div class="test-author">
+          <div class="test-avatar">T</div>
+          <div><strong>Trung Hiếu</strong><br><small>Google Review</small></div>
         </div>
       </div>
-    </section>
-
-    <!-- ─── TESTIMONIAL ──────────────────────────── -->
-    <section class="testimonial-section" aria-label="Đánh giá khách hàng">
-      <blockquote class="reveal">
-        <p class="testimonial__quote">
-          Bít tết Wagyu tuyệt hảo, phục vụ chuyên nghiệp và chu đáo.
-          Không gian nhìn ra hồ rất thơ mộng — hoàn hảo cho những bữa tối lãng mạn.
-          Chắc chắn sẽ quay lại!
-        </p>
-        <footer class="testimonial__author">— Khách hàng Ecopark &nbsp;·&nbsp; Google Review</footer>
-      </blockquote>
-      <div class="testimonial__meta reveal">
-        <span class="testimonial__stars" aria-label="5 sao">★★★★★</span>
-        <p>100% Khách Hàng Đề Xuất &nbsp;·&nbsp; 2,400+ Người Theo Dõi</p>
-      </div>
-    </section>
-
-    <!-- ─── BOOKING ────────────────────────────── -->
-    <section class="booking-section" id="booking" aria-labelledby="booking-h">
-      <div class="booking-inner">
-
-        <!-- Contact info -->
-        <div class="booking-info reveal-left">
-          <p class="eyebrow eyebrow--gold">Liên Hệ &amp; Đặt Bàn</p>
-          <h2 class="section-heading section-heading--light" id="booking-h">
-            Hẹn Gặp Bạn<br>Tại Kobe
-          </h2>
-          <div class="gold-divider"></div>
-
-          <address class="contact-list">
-            <div class="contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <span>L2.01S15 Landmark Ecopark, Hưng Yên</span>
-            </div>
-            <div class="contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.56 4.9 2 2 0 0 1 3.54 2.72h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.5a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              <a href="tel:+84968791868">096 879 18 68</a>
-            </div>
-            <div class="contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-              <a href="mailto:kobesteak.hanoi@gmail.com">kobesteak.hanoi@gmail.com</a>
-            </div>
-            <div class="contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-              <span>Thứ 2: Nghỉ &nbsp;&middot;&nbsp; Thứ 3 – CN: 10:00 – 22:00</span>
-            </div>
-          </address>
-
-          <div class="social-row">
-            <a href="https://www.facebook.com/kobesteak.ecopark/"
-               class="social-btn" aria-label="Facebook Kobe Steak"
-               target="_blank" rel="noopener noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/kobesteak.ecopark"
-               class="social-btn" aria-label="Instagram Kobe Steak"
-               target="_blank" rel="noopener noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-            </a>
-            <a href="https://tiktok.com/@kobe.steak"
-               class="social-btn" aria-label="TikTok Kobe Steak"
-               target="_blank" rel="noopener noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.88a8.2 8.2 0 0 0 4.79 1.53V7.01a4.85 4.85 0 0 1-1.03-.32z"/>
-              </svg>
-            </a>
-          </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text" data-tx="test3_text">"Tổ chức sinh nhật cho chồng ở đây, không gian riêng rất ổn. Wine list phong phú, đặc biệt là Bordeaux rất hợp với steak."</p>
+        <div class="test-author">
+          <div class="test-avatar">L</div>
+          <div><strong>Lan Phương</strong><br><small>Google Review</small></div>
         </div>
-
-        <!-- Booking form -->
-        <form class="booking-form reveal-right" id="booking-form"
-              aria-label="Form đặt bàn Kobe Steak" novalidate>
-          <h3 class="form-title">Đặt Bàn</h3>
-
-          <div class="form-group">
-            <label for="f-name">Họ tên <span aria-hidden="true">*</span></label>
-            <input type="text" id="f-name" name="name" required
-                   placeholder="Nguyễn Văn A" autocomplete="name">
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="f-phone">Số điện thoại <span aria-hidden="true">*</span></label>
-              <input type="tel" id="f-phone" name="phone" required
-                     placeholder="09x xxx xxxx" autocomplete="tel">
-            </div>
-            <div class="form-group">
-              <label for="f-guests">Số khách</label>
-              <input type="number" id="f-guests" name="guests" min="1" max="50" placeholder="2">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="f-date">Ngày <span aria-hidden="true">*</span></label>
-              <input type="date" id="f-date" name="date" required>
-            </div>
-            <div class="form-group">
-              <label for="f-time">Giờ <span aria-hidden="true">*</span></label>
-              <select id="f-time" name="time" required>
-                <option value="">Chọn giờ</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="17:00">17:00</option>
-                <option value="18:00">18:00</option>
-                <option value="19:00">19:00</option>
-                <option value="20:00">20:00</option>
-                <option value="21:00">21:00</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="f-note">Ghi chú (mức chín, yêu cầu đặc biệt...)</label>
-            <textarea id="f-note" name="note" rows="3"
-                      placeholder="VD: 2 bít tết medium rare, 1 bàn ngoài trời, dị ứng gluten..."></textarea>
-          </div>
-
-          <button type="submit" class="btn btn--gold btn--full">Xác Nhận Đặt Bàn</button>
-          <div id="form-msg" role="alert" aria-live="polite"></div>
-        </form>
-
       </div>
-    </section>
+    </div>
+    <p class="test-note" data-tx="test_note">100% Khách Hàng Đề Xuất · 4.9★ trên Google Maps</p>
+  </div>
+</section>
 
-  </main>
-
-  <!-- ─── FOOTER ──────────────────────────────── -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo-badge" aria-label="Kobe Steak Ecopark">
-          <span class="footer-logo__sub">STEAK</span>
-          <span class="footer-logo__main">KOBE</span>
-          <span class="footer-logo__sub">ECOPARK</span>
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking__bg"></div>
+  <div class="container booking__inner">
+    <div class="booking__info">
+      <p class="section-eyebrow" data-tx="book_eyebrow">Đặt bàn</p>
+      <h2 class="section-title" data-tx="book_title">Giữ Chỗ Của Bạn</h2>
+      <p class="booking__desc" data-tx="book_desc">Đặt bàn trước để đảm bảo chỗ ngồi tốt nhất, đặc biệt vào cuối tuần và dịp lễ.</p>
+      <div class="booking__contact-list">
+        <div class="booking__contact-item">
+          <span class="booking__contact-icon">📞</span>
+          <a href="tel:0968791868">096 879 18 68</a>
         </div>
-        <p class="footer-tagline">Nơi Mỗi Miếng Bít Tết<br>Là Một Kỷ Niệm</p>
+        <div class="booking__contact-item">
+          <span class="booking__contact-icon">✉️</span>
+          <a href="mailto:kobesteak.hanoi@gmail.com">kobesteak.hanoi@gmail.com</a>
+        </div>
+        <div class="booking__contact-item">
+          <span class="booking__contact-icon">🕐</span>
+          <span data-tx="book_hours">Thứ 3 – CN: 10:00 – 22:00</span>
+        </div>
       </div>
-
-      <div class="footer-links">
-        <h3 class="footer-col-title">Khám Phá</h3>
-        <ul role="list">
-          <li><a href="#about">Câu Chuyện</a></li>
-          <li><a href="#menu">Thực Đơn</a></li>
-          <li><a href="#experience">Không Gian</a></li>
-          <li><a href="#gallery">Thư Viện</a></li>
-          <li><a href="#booking">Đặt Bàn</a></li>
-        </ul>
+    </div>
+    <form class="booking__form" id="booking-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-name" data-tx="form_name">Họ và tên *</label>
+          <input type="text" id="f-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="f-phone" data-tx="form_phone">Số điện thoại *</label>
+          <input type="tel" id="f-phone" name="phone" required autocomplete="tel">
+        </div>
       </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-guests" data-tx="form_guests">Số khách *</label>
+          <input type="number" id="f-guests" name="guests" min="1" max="50" value="2" required>
+        </div>
+        <div class="form-group">
+          <label for="f-date" data-tx="form_date">Ngày *</label>
+          <input type="date" id="f-date" name="date" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="f-time" data-tx="form_time">Giờ *</label>
+        <select id="f-time" name="time" required>
+          <option value="" data-tx="form_time_ph">-- Chọn giờ --</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="f-notes" data-tx="form_notes">Ghi chú (tuỳ chọn)</label>
+        <textarea id="f-notes" name="notes" rows="3"></textarea>
+      </div>
+      <div class="form-msg" id="form-msg" aria-live="polite"></div>
+      <button type="submit" class="btn btn--gold btn--full" id="form-submit">
+        <span data-tx="form_submit">Xác nhận đặt bàn</span>
+      </button>
+    </form>
+  </div>
+</section>
 
-      <div class="footer-contact">
-        <h3 class="footer-col-title">Liên Hệ</h3>
-        <address>
-          <p>L2.01S15 Landmark Ecopark<br>Hưng Yên, Việt Nam</p>
-          <p><a href="tel:+84968791868">096 879 18 68</a></p>
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="container">
+    <p class="section-eyebrow" data-tx="loc_eyebrow">Vị trí</p>
+    <h2 class="section-title" data-tx="loc_title">Tìm Chúng Tôi</h2>
+  </div>
+  <div class="location__inner">
+    <div class="location__map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.1!2d105.9788!3d20.9806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135baf6def9d6ab%3A0x9d166ecf8faeab64!2sLandmark%20Ecopark!5e0!3m2!1svi!2svn!4v1700000000001!5m2!1svi!2svn"
+        width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Kobe Steak – Landmark Ecopark, Hưng Yên">
+      </iframe>
+    </div>
+    <div class="location__info">
+      <div class="location__detail">
+        <span class="location__icon">📍</span>
+        <div>
+          <strong data-tx="loc_addr_title">Địa chỉ</strong>
+          <p>L2.01S15 Landmark Ecopark, Hưng Yên</p>
+        </div>
+      </div>
+      <div class="location__detail">
+        <span class="location__icon">📞</span>
+        <div>
+          <strong data-tx="loc_phone_title">Điện thoại</strong>
+          <p><a href="tel:0968791868">096 879 18 68</a></p>
+        </div>
+      </div>
+      <div class="location__detail">
+        <span class="location__icon">✉️</span>
+        <div>
+          <strong>Email</strong>
           <p><a href="mailto:kobesteak.hanoi@gmail.com">kobesteak.hanoi@gmail.com</a></p>
-          <p>Thứ 3 – CN: 10:00 – 22:00<br>Thứ 2: Nghỉ</p>
-        </address>
-      </div>
-
-      <div class="footer-social">
-        <h3 class="footer-col-title">Theo Dõi</h3>
-        <div class="footer-social-links">
-          <a href="https://www.facebook.com/kobesteak.ecopark/"
-             class="social-btn" aria-label="Facebook"
-             target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-          <a href="https://www.instagram.com/kobesteak.ecopark"
-             class="social-btn" aria-label="Instagram"
-             target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-          </a>
-          <a href="https://tiktok.com/@kobe.steak"
-             class="social-btn" aria-label="TikTok"
-             target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.88a8.2 8.2 0 0 0 4.79 1.53V7.01a4.85 4.85 0 0 1-1.03-.32z"/>
-            </svg>
-          </a>
         </div>
       </div>
+      <div class="location__detail">
+        <span class="location__icon">🕐</span>
+        <div>
+          <strong data-tx="loc_hours_title">Giờ mở cửa</strong>
+          <p data-tx="loc_hours">Thứ 3 – Chủ Nhật: 10:00 – 22:00<br>Nghỉ Thứ Hai</p>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=Landmark+Ecopark+Hung+Yen+Kobe+Steak" target="_blank" rel="noopener" class="btn btn--gold location__btn" data-tx="loc_directions">
+        📍 Chỉ đường
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 Kobe Steak – Ecopark, Hưng Yên. All rights reserved.</p>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <div class="footer__logo">KOBE<span>STEAK</span></div>
+      <p class="footer__tagline" data-tx="footer_tag">Ẩm thực Âu đẳng cấp · Landmark Ecopark</p>
     </div>
-  </footer>
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <ul>
+        <li><a href="#about"    data-tx="nav_about">Về chúng tôi</a></li>
+        <li><a href="#menu"     data-tx="nav_menu">Thực đơn</a></li>
+        <li><a href="#gallery"  data-tx="nav_gallery">Không gian</a></li>
+        <li><a href="#booking"  data-tx="nav_book">Đặt bàn</a></li>
+        <li><a href="#location" data-tx="nav_location">Vị trí</a></li>
+      </ul>
+    </nav>
+    <div class="footer__social">
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p data-tx="footer_copy">© 2025 Kobe Steak – Landmark Ecopark. All rights reserved.</p>
+  </div>
+</footer>
 
-  <script src="js/supabase.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
