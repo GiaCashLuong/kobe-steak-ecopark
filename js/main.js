@@ -771,13 +771,32 @@ const form    = document.getElementById('booking-form');
 const formMsg = document.getElementById('form-msg');
 const dateInput = document.getElementById('f-date');
 
-// Set min date = today
+const timeSelect = document.getElementById('f-time');
+
+function getTodayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function updateTimeOptions() {
+  if (!timeSelect || !dateInput) return;
+  const isToday = dateInput.value === getTodayStr();
+  const currentHour = new Date().getHours();
+  Array.from(timeSelect.options).forEach(opt => {
+    if (!opt.value) return;
+    const h = parseInt(opt.value.split(':')[0], 10);
+    opt.disabled = isToday && h <= currentHour;
+    if (opt.selected && opt.disabled) timeSelect.value = '';
+  });
+}
+
 if (dateInput) {
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const dd = String(today.getDate()).padStart(2, '0');
-  dateInput.min = `${yyyy}-${mm}-${dd}`;
+  dateInput.min = getTodayStr();
+  dateInput.addEventListener('change', () => {
+    if (dateInput.value < getTodayStr()) dateInput.value = getTodayStr();
+    updateTimeOptions();
+  });
+  updateTimeOptions();
 }
 
 function showMsg(text, type) {
