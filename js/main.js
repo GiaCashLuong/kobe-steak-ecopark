@@ -105,23 +105,23 @@ const MENU = {
       {
         label: { vi:'Bò Mỹ', en:'American Beef' },
         items: [
-          { vi:'Steak Lõi Vai Bò Mỹ', en:'American Top Blade Steak', desc_vi:'Lõi vai bò Mỹ ăn kèm rau củ theo mùa và nước sốt.', desc_en:'American Top Blade Steak served with seasonal vegetables and sauce.', price:'200gr – 285k / 300gr – 395k / 400gr – 538k' },
-          { vi:'Steak Sườn Bò Mỹ Rút Xương', en:'American Short-Rib Boneless Steak', desc_vi:'Sườn bò Mỹ rút xương ăn kèm rau củ theo mùa và nước sốt.', desc_en:'American Short-rib Boneless served with seasonal vegetables and sauce.', price:'120gr – 318k / 200gr – 527k / 300gr – 758k' },
-          { vi:'Steak Tomahawk', en:'Grilled Tomahawk Steak', desc_vi:'Món steak Tomahawk cao cấp ăn kèm rau củ theo mùa, bánh mì và nước sốt.', desc_en:'A luxurious Tomahawk steak served with seasonal vegetables, bread and sauce.', price:'1,000gr – 2,079k', badge:'SPECIAL' },
+          { vi:'Steak Lõi Vai Bò Mỹ', en:'American Top Blade Steak', desc_vi:'Lõi vai bò Mỹ ăn kèm rau củ theo mùa và nước sốt.', desc_en:'American Top Blade Steak served with seasonal vegetables and sauce.', price:'200gr – 285k / 300gr – 395k / 400gr – 538k', img:'https://images.pexels.com/photos/3535383/pexels-photo-3535383.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Steak Sườn Bò Mỹ Rút Xương', en:'American Short-Rib Boneless Steak', desc_vi:'Sườn bò Mỹ rút xương ăn kèm rau củ theo mùa và nước sốt.', desc_en:'American Short-rib Boneless served with seasonal vegetables and sauce.', price:'120gr – 318k / 200gr – 527k / 300gr – 758k', img:'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Steak Tomahawk', en:'Grilled Tomahawk Steak', desc_vi:'Món steak Tomahawk cao cấp ăn kèm rau củ theo mùa, bánh mì và nước sốt.', desc_en:'A luxurious Tomahawk steak served with seasonal vegetables, bread and sauce.', price:'1,000gr – 2,079k', badge:'SPECIAL', img:'https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop' },
         ]
       },
       {
         label: { vi:'Bò Úc', en:'Australian Beef' },
         items: [
-          { vi:'Steak Thăn Ngoại Bò Úc', en:'Australian Striploin Steak', desc_vi:'Thăn ngoại bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian beef striploin served with seasonal vegetables and sauce.', price:'200gr – 285k / 300gr – 395k / 400gr – 538k' },
-          { vi:'Steak Nạc Lưng Bò Úc', en:'Australian Rib-Eye Steak', desc_vi:'Nạc lưng bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian Rib-eye Steak served with seasonal vegetables and sauce.', price:'200gr – 318k / 300gr – 637k / 400gr – 835k' },
-          { vi:'Steak Thăn Nội Bò Úc', en:'Australian Tenderloin Steak', desc_vi:'Thăn nội bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian Tenderloin Steak served with seasonal vegetables and sauce.', price:'200gr – 439k / 300gr – 637k' },
+          { vi:'Steak Thăn Ngoại Bò Úc', en:'Australian Striploin Steak', desc_vi:'Thăn ngoại bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian beef striploin served with seasonal vegetables and sauce.', price:'200gr – 285k / 300gr – 395k / 400gr – 538k', img:'https://images.pexels.com/photos/2491273/pexels-photo-2491273.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Steak Nạc Lưng Bò Úc', en:'Australian Rib-Eye Steak', desc_vi:'Nạc lưng bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian Rib-eye Steak served with seasonal vegetables and sauce.', price:'200gr – 318k / 300gr – 637k / 400gr – 835k', img:'https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Steak Thăn Nội Bò Úc', en:'Australian Tenderloin Steak', desc_vi:'Thăn nội bò Úc ăn kèm rau củ theo mùa và nước sốt.', desc_en:'Australian Tenderloin Steak served with seasonal vegetables and sauce.', price:'200gr – 439k / 300gr – 637k', img:'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&auto=format&fit=crop' },
         ]
       },
       {
         label: { vi:'Cừu Pháp', en:'French Lamb' },
         items: [
-          { vi:'Steak Sườn Cừu Pháp', en:'French Lamb Rack Steak', desc_vi:'Sườn cừu Pháp dùng kèm rau củ theo mùa và nước sốt.', desc_en:'Tender French lamb rack served with seasonal vegetables and sauce.', price:'200gr – 499k / 300gr – 699k' },
+          { vi:'Steak Sườn Cừu Pháp', en:'French Lamb Rack Steak', desc_vi:'Sườn cừu Pháp dùng kèm rau củ theo mùa và nước sốt.', desc_en:'Tender French lamb rack served with seasonal vegetables and sauce.', price:'200gr – 499k / 300gr – 699k', img:'https://images.pexels.com/photos/6287578/pexels-photo-6287578.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -131,25 +131,25 @@ const MENU = {
       {
         label: { vi:'Súp', en:'Soups' },
         items: [
-          { vi:'Súp Kem Bí Đỏ', en:'Pumpkin Cream Soup', desc_vi:'Súp kem bí đỏ đậm vị bí đỏ tự nhiên.', desc_en:'A rich and creamy pumpkin soup.', price:'55k' },
-          { vi:'Súp Kem Nấm', en:'Mushroom Cream Soup', desc_vi:'Súp kem nấm béo ngậy, kết hợp vị nấm thơm lừng.', desc_en:'A hearty and flavorful mushroom cream soup.', price:'66k' },
-          { vi:'Súp Kem Gà Nấm', en:'Chicken Cream Soup', desc_vi:'Súp kem gà nấm với vị ngọt thanh.', desc_en:'A comforting chicken soup with sweet taste.', price:'77k' },
+          { vi:'Súp Kem Bí Đỏ', en:'Pumpkin Cream Soup', desc_vi:'Súp kem bí đỏ đậm vị bí đỏ tự nhiên.', desc_en:'A rich and creamy pumpkin soup.', price:'55k', img:'https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Súp Kem Nấm', en:'Mushroom Cream Soup', desc_vi:'Súp kem nấm béo ngậy, kết hợp vị nấm thơm lừng.', desc_en:'A hearty and flavorful mushroom cream soup.', price:'66k', img:'https://images.pexels.com/photos/1547311/pexels-photo-1547311.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Súp Kem Gà Nấm', en:'Chicken Cream Soup', desc_vi:'Súp kem gà nấm với vị ngọt thanh.', desc_en:'A comforting chicken soup with sweet taste.', price:'77k', img:'https://images.pexels.com/photos/1703272/pexels-photo-1703272.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'Quesadilla', en:'Quesadilla' },
         items: [
-          { vi:'Bánh Quesadilla Bò', en:'Beef Quesadilla', desc_vi:'Vỏ bánh tortilla nướng giòn, nhân bò xay đậm đà và phô mai béo ngậy.', desc_en:'Crispy tortilla, flavorful ground beef, and creamy melted cheese.', price:'131k' },
-          { vi:'Bánh Quesadilla Gà', en:'Chicken Quesadilla', desc_vi:'Vỏ bánh tortilla nướng giòn, nhân gà xé và phô mai tan chảy.', desc_en:'Crispy tortilla, shredded chicken, and melted cheese.', price:'131k' },
+          { vi:'Bánh Quesadilla Bò', en:'Beef Quesadilla', desc_vi:'Vỏ bánh tortilla nướng giòn, nhân bò xay đậm đà và phô mai béo ngậy.', desc_en:'Crispy tortilla, flavorful ground beef, and creamy melted cheese.', price:'131k', img:'https://images.pexels.com/photos/4955269/pexels-photo-4955269.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Bánh Quesadilla Gà', en:'Chicken Quesadilla', desc_vi:'Vỏ bánh tortilla nướng giòn, nhân gà xé và phô mai tan chảy.', desc_en:'Crispy tortilla, shredded chicken, and melted cheese.', price:'131k', img:'https://images.pexels.com/photos/7613568/pexels-photo-7613568.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'Salad', en:'Salad' },
         items: [
-          { vi:'Salad Rau Xanh', en:'Mixed Green Salad', desc_vi:'Salad rau xanh tươi mát, ăn kèm sốt chanh leo.', desc_en:'A refreshing mix of crisp greens with passion fruit sauce.', price:'100k' },
-          { vi:'Salad Caesar Truyền Thống', en:'Caesar Salad', desc_vi:'Salad Caesar với thịt xông khói, lườn gà nướng và rau xanh.', desc_en:'Classic Caesar salad with bacon, grilled chicken breast and greens.', price:'120k' },
-          { vi:'Salad Lườn Ngỗng Xông Khói', en:'Smoked Goose Breast Salad', desc_vi:'Rau xanh, lườn ngỗng và sốt chanh leo cân bằng vị giác.', desc_en:'Green vegetables, goose breast and passion fruit sauce.', price:'140k' },
-          { vi:'Salad Trái Cây Nhiệt Đới', en:'Tropical Fruit Salad', desc_vi:'Các loại trái cây tươi kèm sốt, mang lại vị ngọt mát và thanh nhẹ.', desc_en:'Fresh tropical fruits with a refreshing sauce dressing.', price:'159k' },
+          { vi:'Salad Rau Xanh', en:'Mixed Green Salad', desc_vi:'Salad rau xanh tươi mát, ăn kèm sốt chanh leo.', desc_en:'A refreshing mix of crisp greens with passion fruit sauce.', price:'100k', img:'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Salad Caesar Truyền Thống', en:'Caesar Salad', desc_vi:'Salad Caesar với thịt xông khói, lườn gà nướng và rau xanh.', desc_en:'Classic Caesar salad with bacon, grilled chicken breast and greens.', price:'120k', img:'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Salad Lườn Ngỗng Xông Khói', en:'Smoked Goose Breast Salad', desc_vi:'Rau xanh, lườn ngỗng và sốt chanh leo cân bằng vị giác.', desc_en:'Green vegetables, goose breast and passion fruit sauce.', price:'140k', img:'https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Salad Trái Cây Nhiệt Đới', en:'Tropical Fruit Salad', desc_vi:'Các loại trái cây tươi kèm sốt, mang lại vị ngọt mát và thanh nhẹ.', desc_en:'Fresh tropical fruits with a refreshing sauce dressing.', price:'159k', img:'https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -159,26 +159,26 @@ const MENU = {
       {
         label: { vi:'Gà & Gia Cầm', en:'Chicken & Poultry' },
         items: [
-          { vi:'Cánh Gà Rán', en:'Fried Chicken Wings', desc_vi:'Cánh gà rán với cấu trúc giòn bên ngoài, mọng nước bên trong.', desc_en:'Golden fried chicken wings with a crispy exterior and juicy interior.', price:'110k' },
-          { vi:'Cánh Gà Nướng BBQ', en:'Grilled BBQ Chicken Wings', desc_vi:'Gà nướng BBQ mềm mọng, ăn kèm rau củ theo mùa.', desc_en:'Juicy BBQ grilled chicken served with seasonal vegetables.', price:'120k' },
-          { vi:'Lườn Vịt Áp Chảo', en:'Pan-Seared Duck Breast', desc_vi:'Lườn vịt áp chảo ăn kèm rau củ theo mùa, khoai tây và nước sốt.', desc_en:'Pan-seared duck breast served with seasonal vegetables, potatoes and sauce.', price:'200k' },
+          { vi:'Cánh Gà Rán', en:'Fried Chicken Wings', desc_vi:'Cánh gà rán với cấu trúc giòn bên ngoài, mọng nước bên trong.', desc_en:'Golden fried chicken wings with a crispy exterior and juicy interior.', price:'110k', img:'https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Cánh Gà Nướng BBQ', en:'Grilled BBQ Chicken Wings', desc_vi:'Gà nướng BBQ mềm mọng, ăn kèm rau củ theo mùa.', desc_en:'Juicy BBQ grilled chicken served with seasonal vegetables.', price:'120k', img:'https://images.pexels.com/photos/1352270/pexels-photo-1352270.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Lườn Vịt Áp Chảo', en:'Pan-Seared Duck Breast', desc_vi:'Lườn vịt áp chảo ăn kèm rau củ theo mùa, khoai tây và nước sốt.', desc_en:'Pan-seared duck breast served with seasonal vegetables, potatoes and sauce.', price:'200k', img:'https://images.pexels.com/photos/6941028/pexels-photo-6941028.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'BBQ & Sườn', en:'BBQ & Ribs' },
         items: [
-          { vi:'Sườn Heo Nướng BBQ', en:'BBQ Pork Ribs', desc_vi:'Sườn lợn nướng sốt BBQ, ăn kèm rau củ theo mùa.', desc_en:'Grilled pork ribs with BBQ sauce, served with seasonal vegetables.', price:'285k' },
-          { vi:'Sườn Bò Mỹ Nướng BBQ', en:'BBQ American Beef Ribs', desc_vi:'Sườn bò Mỹ nướng sốt BBQ, ăn kèm rau củ theo mùa.', desc_en:'Grilled American beef ribs, served with seasonal vegetables.', price:'399k' },
+          { vi:'Sườn Heo Nướng BBQ', en:'BBQ Pork Ribs', desc_vi:'Sườn lợn nướng sốt BBQ, ăn kèm rau củ theo mùa.', desc_en:'Grilled pork ribs with BBQ sauce, served with seasonal vegetables.', price:'285k', img:'https://images.pexels.com/photos/3616956/pexels-photo-3616956.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Sườn Bò Mỹ Nướng BBQ', en:'BBQ American Beef Ribs', desc_vi:'Sườn bò Mỹ nướng sốt BBQ, ăn kèm rau củ theo mùa.', desc_en:'Grilled American beef ribs, served with seasonal vegetables.', price:'399k', img:'https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'Hải Sản', en:'Seafood' },
         items: [
-          { vi:'Vẹm Xanh New Zealand Bỏ Lò', en:'Baked NZ Green Mussels', desc_vi:'Vẹm xanh NZ nướng lò cùng phô mai Anchor và Parmesan.', desc_en:'Oven-baked NZ green mussels with Anchor cheese and Parmesan.', price:'199k' },
-          { vi:'Mực Vòng Chiên Giòn', en:'Crispy Fried Calamari', desc_vi:'Mực vòng chiên giòn, bên ngoài giòn rụm, bên trong mềm mại.', desc_en:'Golden-fried calamari rings, crispy outside and tender inside.', price:'209k' },
-          { vi:'Cá Hồi Áp Chảo', en:'Pan-Seared Salmon', desc_vi:'Cá hồi áp chảo ăn kèm rau củ theo mùa, khoai tây và nước sốt.', desc_en:'Pan-seared salmon fillet served with seasonal vegetables and potatoes.', price:'349k' },
-          { vi:'Tôm Sú Nướng Phô Mai', en:'Grilled Tiger Shrimp with Cheese', desc_vi:'Tôm sú tươi nướng vừa chín tới với lớp phô mai tan chảy.', desc_en:'Perfectly grilled tiger shrimp with melted cheese.', price:'399k' },
-          { vi:'Cồi Sò Điệp Nhật Áp Chảo', en:'Pan-Seared Japanese Scallops', desc_vi:'Cồi sò điệp Nhật áp chảo vàng đều, ăn kèm rau củ và nước sốt.', desc_en:'Pan-seared Japanese scallops with seasonal vegetables and a delicate sauce.', price:'399k' },
+          { vi:'Vẹm Xanh New Zealand Bỏ Lò', en:'Baked NZ Green Mussels', desc_vi:'Vẹm xanh NZ nướng lò cùng phô mai Anchor và Parmesan.', desc_en:'Oven-baked NZ green mussels with Anchor cheese and Parmesan.', price:'199k', img:'https://images.pexels.com/photos/566344/pexels-photo-566344.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Mực Vòng Chiên Giòn', en:'Crispy Fried Calamari', desc_vi:'Mực vòng chiên giòn, bên ngoài giòn rụm, bên trong mềm mại.', desc_en:'Golden-fried calamari rings, crispy outside and tender inside.', price:'209k', img:'https://images.pexels.com/photos/3763847/pexels-photo-3763847.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Cá Hồi Áp Chảo', en:'Pan-Seared Salmon', desc_vi:'Cá hồi áp chảo ăn kèm rau củ theo mùa, khoai tây và nước sốt.', desc_en:'Pan-seared salmon fillet served with seasonal vegetables and potatoes.', price:'349k', img:'https://images.pexels.com/photos/1516415/pexels-photo-1516415.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Tôm Sú Nướng Phô Mai', en:'Grilled Tiger Shrimp with Cheese', desc_vi:'Tôm sú tươi nướng vừa chín tới với lớp phô mai tan chảy.', desc_en:'Perfectly grilled tiger shrimp with melted cheese.', price:'399k', img:'https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Cồi Sò Điệp Nhật Áp Chảo', en:'Pan-Seared Japanese Scallops', desc_vi:'Cồi sò điệp Nhật áp chảo vàng đều, ăn kèm rau củ và nước sốt.', desc_en:'Pan-seared Japanese scallops with seasonal vegetables and a delicate sauce.', price:'399k', img:'https://images.pexels.com/photos/8697538/pexels-photo-8697538.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -188,17 +188,17 @@ const MENU = {
       {
         label: { vi:'Spaghetti', en:'Spaghetti' },
         items: [
-          { vi:'Mỳ Ý Bolognese', en:'Bolognese Spaghetti', desc_vi:'Mỳ Ý sốt bò băm cổ điển, ăn kèm sốt cà chua và phô mai Parmesan.', desc_en:'Classic spaghetti with Bolognese sauce and Parmesan cheese.', price:'120k' },
-          { vi:'Mỳ Ý Pesto', en:'Pesto Spaghetti', desc_vi:'Mỳ Ý trộn sốt pesto húng quế tươi và phô mai Parmesan.', desc_en:'Spaghetti tossed in fresh basil pesto and Parmesan cheese.', price:'130k' },
-          { vi:'Mỳ Ý Carbonara', en:'Carbonara', desc_vi:'Mỳ Ý Carbonara béo ngậy và phô mai Parmesan.', desc_en:'A creamy carbonara with a blend of Parmesan cheese.', price:'140k' },
-          { vi:'Mỳ Ý Hải Sản', en:'Seafood Spaghetti', desc_vi:'Mỳ Ý hải sản kết hợp tôm, mực và vẹm xanh.', desc_en:'Seafood spaghetti featuring shrimp, squid, and green mussels.', price:'160k' },
+          { vi:'Mỳ Ý Bolognese', en:'Bolognese Spaghetti', desc_vi:'Mỳ Ý sốt bò băm cổ điển, ăn kèm sốt cà chua và phô mai Parmesan.', desc_en:'Classic spaghetti with Bolognese sauce and Parmesan cheese.', price:'120k', img:'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Mỳ Ý Pesto', en:'Pesto Spaghetti', desc_vi:'Mỳ Ý trộn sốt pesto húng quế tươi và phô mai Parmesan.', desc_en:'Spaghetti tossed in fresh basil pesto and Parmesan cheese.', price:'130k', img:'https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Mỳ Ý Carbonara', en:'Carbonara', desc_vi:'Mỳ Ý Carbonara béo ngậy và phô mai Parmesan.', desc_en:'A creamy carbonara with a blend of Parmesan cheese.', price:'140k', img:'https://images.pexels.com/photos/4518844/pexels-photo-4518844.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Mỳ Ý Hải Sản', en:'Seafood Spaghetti', desc_vi:'Mỳ Ý hải sản kết hợp tôm, mực và vẹm xanh.', desc_en:'Seafood spaghetti featuring shrimp, squid, and green mussels.', price:'160k', img:'https://images.pexels.com/photos/3890137/pexels-photo-3890137.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'Penne', en:'Penne' },
         items: [
-          { vi:'Nui Bỏ Lò Phô Mai', en:'Baked Penne & Cheese', desc_vi:'Mì ống đút lò cùng mông bò, phô mai Anchor và Parmesan.', desc_en:'Oven-baked penne with beef, Anchor cheese and Parmesan.', price:'180k' },
-          { vi:'Penne Lamb Chop', en:'Penne with Lamb Chop', desc_vi:'Mì ống penne dùng kèm sườn cừu, phô mai Parmesan và nước sốt đậm vị.', desc_en:'Penne pasta served with lamb chop, Parmesan and a flavorful sauce.', price:'249k' },
+          { vi:'Nui Bỏ Lò Phô Mai', en:'Baked Penne & Cheese', desc_vi:'Mì ống đút lò cùng mông bò, phô mai Anchor và Parmesan.', desc_en:'Oven-baked penne with beef, Anchor cheese and Parmesan.', price:'180k', img:'https://images.pexels.com/photos/5949885/pexels-photo-5949885.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Penne Lamb Chop', en:'Penne with Lamb Chop', desc_vi:'Mì ống penne dùng kèm sườn cừu, phô mai Parmesan và nước sốt đậm vị.', desc_en:'Penne pasta served with lamb chop, Parmesan and a flavorful sauce.', price:'249k', img:'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -208,13 +208,13 @@ const MENU = {
       {
         label: { vi:'Pizza Tươi', en:'Artisan Pizza' },
         items: [
-          { vi:'Pizza Cà Chua', en:'Pizza Margherita', desc_vi:'Pizza cổ điển với sốt cà chua, phô mai mozzarella tươi và lá húng quế.', desc_en:'Classic pizza with tomato sauce, fresh mozzarella and basil leaves.', price:'179k' },
-          { vi:'Pizza Bò Băm', en:'Minced Beef Pizza', desc_vi:'Pizza với bò bằm đậm đà, xúc xích, ngô ngọt và phô mai béo ngậy.', desc_en:'Minced beef, sausage, sweet corn and rich cheese pizza.', price:'199k' },
-          { vi:'Pizza Hawaii', en:'Hawaiian Pizza', desc_vi:'Sự kết hợp hài hòa giữa giăm bông, dứa tươi và phô mai mozzarella.', desc_en:'Ham, fresh pineapple, and mozzarella cheese on tomato sauce.', price:'209k' },
-          { vi:'Pizza 4 Phô Mai', en:'Quattro Formaggi Pizza', desc_vi:'Pizza đặc biệt với bốn loại phô mai: mozzarella, blue cheese, parmesan và cheddar.', desc_en:'Special pizza with mozzarella, blue cheese, parmesan and cheddar.', price:'219k' },
-          { vi:'Pizza Pepperoni', en:'Pepperoni Pizza', desc_vi:'Pizza với xúc xích cay, phô mai Anchor, Queso và Parmesan.', desc_en:'Classic pizza topped with spicy sausage, Anchor, Queso and Parmesan cheese.', price:'230k' },
-          { vi:'Pizza Cá Hồi', en:'Salmon Pizza', desc_vi:'Pizza với cá hồi, phô mai Anchor, Queso và Parmesan béo thơm.', desc_en:'Salmon, Anchor cheese, Queso cheese and Parmesan pizza.', price:'240k' },
-          { vi:'Pizza Hải Sản', en:'Seafood Pizza', desc_vi:'Pizza với mực giòn, tôm tươi, cá hồi béo ngậy và phô mai mozzarella.', desc_en:'Tender squid, fresh shrimp, salmon and mozzarella cheese pizza.', price:'279k' },
+          { vi:'Pizza Cà Chua', en:'Pizza Margherita', desc_vi:'Pizza cổ điển với sốt cà chua, phô mai mozzarella tươi và lá húng quế.', desc_en:'Classic pizza with tomato sauce, fresh mozzarella and basil leaves.', price:'179k', img:'https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Pizza Bò Băm', en:'Minced Beef Pizza', desc_vi:'Pizza với bò bằm đậm đà, xúc xích, ngô ngọt và phô mai béo ngậy.', desc_en:'Minced beef, sausage, sweet corn and rich cheese pizza.', price:'199k', img:'https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Pizza Hawaii', en:'Hawaiian Pizza', desc_vi:'Sự kết hợp hài hòa giữa giăm bông, dứa tươi và phô mai mozzarella.', desc_en:'Ham, fresh pineapple, and mozzarella cheese on tomato sauce.', price:'209k', img:'https://images.pexels.com/photos/2471171/pexels-photo-2471171.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Pizza 4 Phô Mai', en:'Quattro Formaggi Pizza', desc_vi:'Pizza đặc biệt với bốn loại phô mai: mozzarella, blue cheese, parmesan và cheddar.', desc_en:'Special pizza with mozzarella, blue cheese, parmesan and cheddar.', price:'219k', img:'https://images.pexels.com/photos/3944311/pexels-photo-3944311.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Pizza Pepperoni', en:'Pepperoni Pizza', desc_vi:'Pizza với xúc xích cay, phô mai Anchor, Queso và Parmesan.', desc_en:'Classic pizza topped with spicy sausage, Anchor, Queso and Parmesan cheese.', price:'230k', img:'https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Pizza Cá Hồi', en:'Salmon Pizza', desc_vi:'Pizza với cá hồi, phô mai Anchor, Queso và Parmesan béo thơm.', desc_en:'Salmon, Anchor cheese, Queso cheese and Parmesan pizza.', price:'240k', img:'https://images.pexels.com/photos/5961880/pexels-photo-5961880.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Pizza Hải Sản', en:'Seafood Pizza', desc_vi:'Pizza với mực giòn, tôm tươi, cá hồi béo ngậy và phô mai mozzarella.', desc_en:'Tender squid, fresh shrimp, salmon and mozzarella cheese pizza.', price:'279k', img:'https://images.pexels.com/photos/4551832/pexels-photo-4551832.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -224,17 +224,17 @@ const MENU = {
       {
         label: { vi:'Best with Wines', en:'Best with Wines' },
         items: [
-          { vi:'Xúc Xích Toulouse Nướng', en:'Grilled Toulouse Sausages', desc_vi:'Xúc xích Toulouse xông khói nướng kèm các loại gia vị.', desc_en:'Toulouse sausage grilled with spices.', price:'109k' },
-          { vi:'Đĩa Đồ Chiên Tổng Hợp', en:'Fried Mix Party Platter', desc_vi:'Mực chiên, khoai tây chiên, phô mai que và xúc xích.', desc_en:'Fried calamari rings, French fries, cheese sticks and sausages.', price:'239k' },
-          { vi:'Đùi Lợn Muối Tây Ban Nha', en:'Spanish Cured Ham', desc_vi:'Đùi lợn muối Tây Ban Nha với hương vị mặn nhẹ đặc trưng, thơm béo tự nhiên.', desc_en:'Traditional Spanish cured ham with a delicate salty flavor and rich aroma.', price:'299k' },
-          { vi:'Đĩa Thịt Nguội Tổng Hợp', en:'Cold Cut Platter', desc_vi:'Giăm bông xông khói, salami, các loại thịt nguội ăn kèm bánh mì bơ tỏi.', desc_en:'Imported cold cuts including smoked ham, salami served with garlic butter bread.', price:'359k' },
+          { vi:'Xúc Xích Toulouse Nướng', en:'Grilled Toulouse Sausages', desc_vi:'Xúc xích Toulouse xông khói nướng kèm các loại gia vị.', desc_en:'Toulouse sausage grilled with spices.', price:'109k', img:'https://images.pexels.com/photos/1833349/pexels-photo-1833349.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Đĩa Đồ Chiên Tổng Hợp', en:'Fried Mix Party Platter', desc_vi:'Mực chiên, khoai tây chiên, phô mai que và xúc xích.', desc_en:'Fried calamari rings, French fries, cheese sticks and sausages.', price:'239k', img:'https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Đùi Lợn Muối Tây Ban Nha', en:'Spanish Cured Ham', desc_vi:'Đùi lợn muối Tây Ban Nha với hương vị mặn nhẹ đặc trưng, thơm béo tự nhiên.', desc_en:'Traditional Spanish cured ham with a delicate salty flavor and rich aroma.', price:'299k', img:'https://images.pexels.com/photos/8697517/pexels-photo-8697517.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Đĩa Thịt Nguội Tổng Hợp', en:'Cold Cut Platter', desc_vi:'Giăm bông xông khói, salami, các loại thịt nguội ăn kèm bánh mì bơ tỏi.', desc_en:'Imported cold cuts including smoked ham, salami served with garlic butter bread.', price:'359k', img:'https://images.pexels.com/photos/4553031/pexels-photo-4553031.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'Burger', en:'Burger' },
         items: [
-          { vi:'Burger Gà', en:'Chicken Burger', desc_vi:'Burger gà rán ăn kèm rau củ, phô mai cheddar và nước sốt.', desc_en:'Fried chicken burger with vegetables, cheddar cheese and sauce.', price:'150k' },
-          { vi:'Burger Bò Truyền Thống', en:'Classic Beef Burger', desc_vi:'Burger thịt bò ăn kèm rau củ, phô mai cheddar, bacon và nước sốt.', desc_en:'Beef burger with vegetables, cheddar cheese, bacon and sauce.', price:'170k' },
+          { vi:'Burger Gà', en:'Chicken Burger', desc_vi:'Burger gà rán ăn kèm rau củ, phô mai cheddar và nước sốt.', desc_en:'Fried chicken burger with vegetables, cheddar cheese and sauce.', price:'150k', img:'https://images.pexels.com/photos/1199960/pexels-photo-1199960.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Burger Bò Truyền Thống', en:'Classic Beef Burger', desc_vi:'Burger thịt bò ăn kèm rau củ, phô mai cheddar, bacon và nước sốt.', desc_en:'Beef burger with vegetables, cheddar cheese, bacon and sauce.', price:'170k', img:'https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -244,11 +244,11 @@ const MENU = {
       {
         label: { vi:'Khoai Tây & Bánh Mì', en:'Potato & Bread' },
         items: [
-          { vi:'Khoai Tây Nghiền', en:'Mashed Potatoes', desc_vi:'Khoai tây nghiền mềm mịn, béo ngậy từ bơ và kem tươi.', desc_en:'Smooth and creamy mashed potatoes, made with butter and cream.', price:'55k' },
-          { vi:'Khoai Tây Chiên', en:'Classic French Fries', desc_vi:'Khoai tây chiên giòn rụm, đậm đà vị muối.', desc_en:'Crispy French fries tossed in salt.', price:'55k' },
-          { vi:'Khoai Tây Bổ Cau', en:'Potato Wedges', desc_vi:'Khoai tây bổ cau vàng giòn, nêm nếm hoàn hảo với gia vị và thảo mộc.', desc_en:'Crispy golden potato wedges, perfectly seasoned with spices and herbs.', price:'55k' },
-          { vi:'Bánh Mì Bơ Tỏi', en:'Garlic Butter Bread', desc_vi:'Bánh mì bơ tỏi giòn tan, thơm lừng vị bơ và tỏi.', desc_en:'Crispy garlic bread, perfectly toasted and packed with flavor.', price:'55k' },
-          { vi:'Bánh Mì Tỏi Phô Mai', en:'Garlic Cheese Bread', desc_vi:'Bánh mì tẩm ướp với tỏi, phô mai và các loại gia vị.', desc_en:'Bread flavored with garlic, cheese and spices.', price:'79k' },
+          { vi:'Khoai Tây Nghiền', en:'Mashed Potatoes', desc_vi:'Khoai tây nghiền mềm mịn, béo ngậy từ bơ và kem tươi.', desc_en:'Smooth and creamy mashed potatoes, made with butter and cream.', price:'55k', img:'https://images.pexels.com/photos/4149135/pexels-photo-4149135.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Khoai Tây Chiên', en:'Classic French Fries', desc_vi:'Khoai tây chiên giòn rụm, đậm đà vị muối.', desc_en:'Crispy French fries tossed in salt.', price:'55k', img:'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Khoai Tây Bổ Cau', en:'Potato Wedges', desc_vi:'Khoai tây bổ cau vàng giòn, nêm nếm hoàn hảo với gia vị và thảo mộc.', desc_en:'Crispy golden potato wedges, perfectly seasoned with spices and herbs.', price:'55k', img:'https://images.pexels.com/photos/479213/pexels-photo-479213.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Bánh Mì Bơ Tỏi', en:'Garlic Butter Bread', desc_vi:'Bánh mì bơ tỏi giòn tan, thơm lừng vị bơ và tỏi.', desc_en:'Crispy garlic bread, perfectly toasted and packed with flavor.', price:'55k', img:'https://images.pexels.com/photos/3926134/pexels-photo-3926134.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Bánh Mì Tỏi Phô Mai', en:'Garlic Cheese Bread', desc_vi:'Bánh mì tẩm ướp với tỏi, phô mai và các loại gia vị.', desc_en:'Bread flavored with garlic, cheese and spices.', price:'79k', img:'https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -258,8 +258,8 @@ const MENU = {
       {
         label: { vi:'Italian-style Desserts', en:'Italian-style Desserts' },
         items: [
-          { vi:'Panna Cotta', en:'Panna Cotta', desc_vi:'Mứn tráng miệng mềm mịn với hương vị sữa béo nhẹ, ngọt dịu và dễ ăn.', desc_en:'A smooth and creamy dessert with a light, delicate sweetness.', price:'35k' },
-          { vi:'Tiramisu', en:'Tiramisu', desc_vi:'Bánh tiramisu với lớp kem mascarpone béo mịn, vị cà phê đậm nhẹ và cân bằng.', desc_en:'A classic Italian dessert with creamy mascarpone and a subtle coffee flavor.', price:'50k' },
+          { vi:'Panna Cotta', en:'Panna Cotta', desc_vi:'Mứn tráng miệng mềm mịn với hương vị sữa béo nhẹ, ngọt dịu và dễ ăn.', desc_en:'A smooth and creamy dessert with a light, delicate sweetness.', price:'35k', img:'https://images.pexels.com/photos/6880219/pexels-photo-6880219.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Tiramisu', en:'Tiramisu', desc_vi:'Bánh tiramisu với lớp kem mascarpone béo mịn, vị cà phê đậm nhẹ và cân bằng.', desc_en:'A classic Italian dessert with creamy mascarpone and a subtle coffee flavor.', price:'50k', img:'https://images.pexels.com/photos/6133303/pexels-photo-6133303.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -269,28 +269,28 @@ const MENU = {
       {
         label: { vi:'Nước & Nước Trái Cây', en:'Water & Juices' },
         items: [
-          { vi:'Nước Khoáng Lavie', en:'Lavie Mineral Water', desc_vi:'Một chai nước khoáng La Vie tinh khiết.', desc_en:'A bottle of pure, refreshing La Vie mineral water.', price:'18k' },
-          { vi:'Nước Chanh Tươi', en:'Fresh Lemon Juice', desc_vi:'Nước chanh tươi mát lạnh.', desc_en:'Freshly squeezed lemonade.', price:'30k' },
-          { vi:'Nước Cam Tươi', en:'Fresh Orange Juice', desc_vi:'Nước cam tươi mát lạnh.', desc_en:'Freshly squeezed orange juice.', price:'55k' },
+          { vi:'Nước Khoáng Lavie', en:'Lavie Mineral Water', desc_vi:'Một chai nước khoáng La Vie tinh khiết.', desc_en:'A bottle of pure, refreshing La Vie mineral water.', price:'18k', img:'https://images.pexels.com/photos/327090/pexels-photo-327090.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Nước Chanh Tươi', en:'Fresh Lemon Juice', desc_vi:'Nước chanh tươi mát lạnh.', desc_en:'Freshly squeezed lemonade.', price:'30k', img:'https://images.pexels.com/photos/1232152/pexels-photo-1232152.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Nước Cam Tươi', en:'Fresh Orange Juice', desc_vi:'Nước cam tươi mát lạnh.', desc_en:'Freshly squeezed orange juice.', price:'55k', img:'https://images.pexels.com/photos/158053/fresh-orange-juice-squeezed-refreshing-citrus-158053.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'Bia & Nước Ngọt', en:'Beer & Soft Drinks' },
         items: [
-          { vi:'Bia Sài Gòn', en:'Sai Gon Beer', desc_vi:'Nồng độ 4.9%, sản xuất tại Việt Nam từ 100% lúa mạch.', desc_en:'4.9% alcohol, made in Vietnam from 100% barley.', price:'30k' },
-          { vi:'Coca / Pepsi / 7-Up / Soda', en:'Coca / Pepsi / 7-Up / Soda', desc_vi:'Một lon nước giải khát có ga, mát lạnh.', desc_en:'A can of cold, carbonated soft drink.', price:'25k' },
-          { vi:'Coca Light', en:'Coca-Cola Light', desc_vi:'Coca Light ít calo, phù hợp cho người ăn kiêng.', desc_en:'Low-calorie Coca-Cola Light, suitable for a diet.', price:'30k' },
-          { vi:'Bia Heineken', en:'Heineken Beer', desc_vi:'Nồng độ 5%, xuất xứ Hà Lan. Lúa mạch và hoa bia.', desc_en:'5% alcohol, origin Netherlands. Barley and hops.', price:'40k' },
+          { vi:'Bia Sài Gòn', en:'Sai Gon Beer', desc_vi:'Nồng độ 4.9%, sản xuất tại Việt Nam từ 100% lúa mạch.', desc_en:'4.9% alcohol, made in Vietnam from 100% barley.', price:'30k', img:'https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Coca / Pepsi / 7-Up / Soda', en:'Coca / Pepsi / 7-Up / Soda', desc_vi:'Một lon nước giải khát có ga, mát lạnh.', desc_en:'A can of cold, carbonated soft drink.', price:'25k', img:'https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Coca Light', en:'Coca-Cola Light', desc_vi:'Coca Light ít calo, phù hợp cho người ăn kiêng.', desc_en:'Low-calorie Coca-Cola Light, suitable for a diet.', price:'30k', img:'https://images.pexels.com/photos/2983100/pexels-photo-2983100.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Bia Heineken', en:'Heineken Beer', desc_vi:'Nồng độ 5%, xuất xứ Hà Lan. Lúa mạch và hoa bia.', desc_en:'5% alcohol, origin Netherlands. Barley and hops.', price:'40k', img:'https://images.pexels.com/photos/1267361/pexels-photo-1267361.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       },
       {
         label: { vi:'Rượu Vang', en:'Wines' },
         items: [
-          { vi:'B Royal Cabernet Sauvignon (ly)', en:'B Royal Cabernet Sauvignon (glass)', desc_vi:'Vang Đỏ, 15%, Nam Phi, Cabernet Sauvignon, 150ml.', desc_en:'Red Wine, 15%, South Africa, Cabernet Sauvignon, 150ml.', price:'69k' },
-          { vi:'Terre Forti – Merlot D\'Italia', en:'Terre Forti – Merlot D\'Italia', desc_vi:'Vang Đỏ, 13%, Ý, Merlot, 750ml.', desc_en:'Red Wine, 13%, Italy, Merlot, 750ml.', price:'399k' },
-          { vi:'Chantecaille – Bordeaux Red', en:'Chantecaille – Bordeaux Red', desc_vi:'Vang Đỏ, 13.5%, Pháp, Cabernet Sauvignon & Merlot, 750ml.', desc_en:'Red Wine, 13.5%, France, Cabernet Sauvignon & Merlot, 750ml.', price:'619k' },
-          { vi:'Maison Castel – Merlot IGP d\'Oc', en:'Maison Castel – Merlot IGP d\'Oc', desc_vi:'Vang Đỏ, 13%, Pháp, Merlot, 750ml.', desc_en:'Red Wine, 13%, France, Merlot, 750ml.', price:'850k' },
-          { vi:'Purato Siccari Appassimento Organic', en:'Purato Siccari Appassimento Organic', desc_vi:'Vang Đỏ, 14.5%, Ý, Syrah & Nero d\'Avola, 750ml.', desc_en:'Red Wine, 14.5%, Italy, Syrah & Nero d\'Avola, 750ml.', price:'1,050k' },
+          { vi:'B Royal Cabernet Sauvignon (ly)', en:'B Royal Cabernet Sauvignon (glass)', desc_vi:'Vang Đỏ, 15%, Nam Phi, Cabernet Sauvignon, 150ml.', desc_en:'Red Wine, 15%, South Africa, Cabernet Sauvignon, 150ml.', price:'69k', img:'https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Terre Forti – Merlot D\'Italia', en:'Terre Forti – Merlot D\'Italia', desc_vi:'Vang Đỏ, 13%, Ý, Merlot, 750ml.', desc_en:'Red Wine, 13%, Italy, Merlot, 750ml.', price:'399k', img:'https://images.pexels.com/photos/2912108/pexels-photo-2912108.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Chantecaille – Bordeaux Red', en:'Chantecaille – Bordeaux Red', desc_vi:'Vang Đỏ, 13.5%, Pháp, Cabernet Sauvignon & Merlot, 750ml.', desc_en:'Red Wine, 13.5%, France, Cabernet Sauvignon & Merlot, 750ml.', price:'619k', img:'https://images.pexels.com/photos/3407777/pexels-photo-3407777.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Maison Castel – Merlot IGP d\'Oc', en:'Maison Castel – Merlot IGP d\'Oc', desc_vi:'Vang Đỏ, 13%, Pháp, Merlot, 750ml.', desc_en:'Red Wine, 13%, France, Merlot, 750ml.', price:'850k', img:'https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=600' },
+          { vi:'Purato Siccari Appassimento Organic', en:'Purato Siccari Appassimento Organic', desc_vi:'Vang Đỏ, 14.5%, Ý, Syrah & Nero d\'Avola, 750ml.', desc_en:'Red Wine, 14.5%, Italy, Syrah & Nero d\'Avola, 750ml.', price:'1,050k', img:'https://images.pexels.com/photos/2912108/pexels-photo-2912108.jpeg?auto=compress&cs=tinysrgb&w=600' },
         ]
       }
     ]
@@ -343,12 +343,15 @@ function renderMenuPanels() {
         const card = document.createElement('div');
         card.className = 'menu-card';
         card.innerHTML = `
-          <div class="menu-card__name">${item[lang === 'vi' ? 'vi' : 'en']}</div>
-          ${lang === 'vi' ? `<div class="menu-card__name-en">${item.en}</div>` : ''}
-          <div class="menu-card__desc">${item['desc_' + lang]}</div>
-          <div class="menu-card__footer">
-            <span class="menu-card__price">${formatPrice(item.price)}</span>
-            ${item.badge ? `<span class="menu-card__badge menu-card__badge--special">${item.badge}</span>` : ''}
+          <img class="menu-card__img" src="${item.img}" alt="${item[lang === 'vi' ? 'vi' : 'en']}" loading="lazy">
+          <div class="menu-card__body">
+            <div class="menu-card__name">${item[lang === 'vi' ? 'vi' : 'en']}</div>
+            ${lang === 'vi' ? `<div class="menu-card__name-en">${item.en}</div>` : ''}
+            <div class="menu-card__desc">${item['desc_' + lang]}</div>
+            <div class="menu-card__footer">
+              <span class="menu-card__price">${formatPrice(item.price)}</span>
+              ${item.badge ? `<span class="menu-card__badge menu-card__badge--special">${item.badge}</span>` : ''}
+            </div>
           </div>`;
         grid.appendChild(card);
       });
