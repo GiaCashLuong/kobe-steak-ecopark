@@ -546,7 +546,7 @@ if (form) {
     try {
       const { error } = await window.db
         .from('kobe_bookings')
-        .insert([{ name, phone, guests, date, time, notes }]);
+        .insert([{ name, phone, guests, date, time, note: notes }]);
       if (error) throw error;
       showMsg(TX[lang].form_ok, 'success');
       form.reset();
