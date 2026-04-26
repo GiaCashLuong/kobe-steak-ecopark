@@ -68,6 +68,85 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => 
   }
 });
 
+/* ─── BENTO GRID STAGGER ────────────────────────────────── */
+const bentoGrid = document.getElementById('bento-grid');
+if (bentoGrid) {
+  const bentoObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.bento-card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('bento-in'), i * 110);
+      });
+      bentoObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.1 });
+  bentoObs.observe(bentoGrid);
+}
+
+/* ─── MASONRY GALLERY STAGGER ───────────────────────────── */
+const masonryGrid = document.getElementById('masonry-grid');
+if (masonryGrid) {
+  const masonryObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.masonry-item').forEach((item, i) => {
+        setTimeout(() => item.classList.add('masonry-in'), i * 90);
+      });
+      masonryObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.05 });
+  masonryObs.observe(masonryGrid);
+}
+
+/* ─── FEATURE CARD 3D TILT ──────────────────────────────── */
+document.querySelectorAll('.feature').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const rotX = ((y - cy) / cy) * -9;
+    const rotY = ((x - cx) / cx) * 9;
+    card.style.transform = `perspective(500px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.06)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+/* ─── STATS COUNTER ANIMATION ───────────────────────────── */
+const statsRow = document.querySelector('.stats-row');
+if (statsRow) {
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      counterObs.unobserve(entry.target);
+      entry.target.querySelectorAll('.stat__num[data-to]').forEach(el => {
+        const to     = parseFloat(el.dataset.to);
+        const suffix = el.dataset.suffix || '';
+        const dec    = to % 1 !== 0 ? 1 : 0;
+        const plusEl = el.querySelector('.stat__plus');
+        const node   = el.childNodes[0];
+        if (!node) return;
+        const t0 = performance.now();
+        const dur = 1600;
+        (function step(now) {
+          const p = Math.min((now - t0) / dur, 1);
+          const v = 1 - Math.pow(1 - p, 3);
+          node.textContent = (v * to).toFixed(dec) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+          else {
+            node.textContent = to.toFixed(dec) + suffix;
+            if (plusEl) el.appendChild(plusEl);
+          }
+        })(t0);
+      });
+    });
+  }, { threshold: 0.6 });
+  counterObs.observe(statsRow);
+}
+
 /* ─── BOOKING FORM ──────────────────────────────────────── */
 const form    = document.getElementById('booking-form');
 const formMsg = document.getElementById('form-msg');
