@@ -516,14 +516,6 @@ const branches = [
     lat: 20.9550513,
     lng: 105.9314746,
     maps: 'https://maps.google.com/?q=Kobe+Steak+Landmark+Ecopark+Hung+Yen'
-  },
-  {
-    name: 'Kobe Steak – Cầu Giấy',
-    addr: '75 Cầu Giấy, Quan Hoa, Cầu Giấy, Hà Nội',
-    phone: '096 879 18 68',
-    lat: 21.0369185,
-    lng: 105.7889445,
-    maps: 'https://maps.google.com/?q=75+Cau+Giay+Quan+Hoa+Cau+Giay+Ha+Noi'
   }
   // Thêm chi nhánh mới vào đây:
   // { name: '...', addr: '...', phone: '...', lat: ..., lng: ..., maps: '...' }
@@ -532,7 +524,7 @@ const branches = [
 const mapEl = document.getElementById('branch-map');
 if (mapEl && typeof L !== 'undefined') {
   const map = L.map('branch-map', {
-    scrollWheelZoom: false,
+    scrollWheelZoom: true,
     zoomControl: true
   });
 
