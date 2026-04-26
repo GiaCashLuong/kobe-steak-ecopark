@@ -520,15 +520,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .menu-card__footer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: .5rem;
 }
 .menu-card__price {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
   color: var(--gold);
+  line-height: 1.8;
 }
 .menu-card__badge {
   font-size: .68rem;

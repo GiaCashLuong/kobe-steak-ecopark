@@ -318,7 +318,9 @@ document.getElementById('lang-toggle').addEventListener('click', () => {
 });
 
 /* ─── Menu Render ────────────────────────────────────────── */
-function formatPrice(p) { return p; }
+function formatPrice(p) {
+  return p.split(' / ').join('<br>');
+}
 
 function renderMenuPanels() {
   const panels = document.getElementById('menu-panels');
