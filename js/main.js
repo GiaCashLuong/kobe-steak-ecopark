@@ -516,6 +516,14 @@ const branches = [
     lat: 20.9550513,
     lng: 105.9314746,
     maps: 'https://maps.google.com/?q=Kobe+Steak+Landmark+Ecopark+Hung+Yen'
+  },
+  {
+    name: 'Kobe Steak – Cầu Giấy',
+    addr: '75 Cầu Giấy, Quan Hoa, Cầu Giấy, Hà Nội',
+    phone: '096 879 18 68',
+    lat: 21.0369185,
+    lng: 105.7889445,
+    maps: 'https://maps.google.com/?q=75+Cau+Giay+Quan+Hoa+Cau+Giay+Ha+Noi'
   }
   // Thêm chi nhánh mới vào đây:
   // { name: '...', addr: '...', phone: '...', lat: ..., lng: ..., maps: '...' }
@@ -540,8 +548,8 @@ if (mapEl && typeof L !== 'undefined') {
     iconAnchor: [12, 12]
   });
 
-  branches.forEach(b => {
-    L.marker([b.lat, b.lng], { icon: pulseIcon })
+  const markers = branches.map((b, i) => {
+    const marker = L.marker([b.lat, b.lng], { icon: pulseIcon })
       .addTo(map)
       .bindPopup(`
         <strong class="popup-name">${b.name}</strong>
@@ -551,15 +559,25 @@ if (mapEl && typeof L !== 'undefined') {
           Xem trên Google Maps →
         </a>
       `, { maxWidth: 240, className: 'branch-popup' });
+    return marker;
+  });
+
+  // Branch card click → fly to + open popup
+  const cards = document.querySelectorAll('.branch-card');
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      map.flyTo([branches[i].lat, branches[i].lng], 15, { duration: 1 });
+      markers[i].openPopup();
+    });
   });
 
   if (branches.length === 1) {
-    map.setView([branches[0].lat, branches[0].lng], 14);
+    map.setView([branches[0].lat, branches[0].lng], 15);
   } else {
-    const group = L.featureGroup(branches.map(b =>
-      L.marker([b.lat, b.lng])
-    ));
-    map.fitBounds(group.getBounds().pad(0.2));
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.25));
   }
 }
 
